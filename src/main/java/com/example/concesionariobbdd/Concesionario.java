@@ -39,28 +39,29 @@ public class Concesionario {
     }
 
     public void setAnio_fabricacion(String anio_fabricacion) {
-        this.anio_fabricacion = addressLine1;
+        this.anio_fabricacion = anio_fabricacion;
     }
 
     public void setBastidor(String bastidor) {
         this.bastidor = bastidor;
     }
 
-    public void setBastidor(String bastidor) {
-        this.bastidor = bastidor;
+    public void setPrecio(String precio) {
+        this.precio = precio;
     }
 
-    public void setBastidor(String bastidor) {
-        this.bastidor = bastidor;
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 
-    public void setBastidor(String bastidor) {
-        this.bastidor = bastidor;
+    public void setMotor(String motor) {
+        this.motor = motor;
     }
 
-    public void setBastidor(String bastidor) {
-        this.bastidor = bastidor;
+    public void setExtras(String extras) {
+        this.extras = extras;
     }
+
 
     public String getCod_Coche() {
         return Cod_Coche;
@@ -82,33 +83,32 @@ public class Concesionario {
         return precio;
     }
 
-    public String getPrecio() {
-        return precio;
+    public String getMarca() {
+        return marca;
     }
 
-    public String getPrecio() {
-        return precio;
+    public String getMatricula() {
+        return matricula;
     }
 
-    public String getPrecio() {
-        return precio;
+    public String getMotor() {
+        return motor;
     }
 
-    public String getPrecio() {
-        return precio;
+    public String getExtras() {
+        return extras;
     }
 
 
-
-    String phone;
-    String addressLine1;
-    String addressLine2;
-
-    public Concesionario(String officeCode, String city, String phone, String addressLine1, String addressLine2) {
-        this.Cod_Coche = officeCode;
-        this.city = city;
-        this.phone = phone;
-        this.addressLine1 = addressLine1;
-        this.addressLine2 = addressLine2;
+    public Concesionario(String Cod_Coche, String marca, String modelo, String anio_fabricacion, String bastidor, String precio, String matricula, String motor, String extras) {
+        this.Cod_Coche = Cod_Coche;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.anio_fabricacion = anio_fabricacion;
+        this.bastidor = bastidor;
+        this.precio = precio;
+        this.matricula = matricula;
+        this.motor = motor;
+        this.extras = extras;
     }
 }
