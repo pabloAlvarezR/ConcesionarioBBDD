@@ -2,27 +2,53 @@ package com.example.concesionariobbdd;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.io.IOException;
+import java.sql.*;
 
 public class HelloController {
     private Concesionario auxiliar;
 
     @FXML
+    private Button btnAnadir;
+    @FXML
+    private Button btnBuscar;
+    @FXML
+    private Button btnEditar;
+    @FXML
+    private Button btnEliminar;
+    @FXML
+    private Button btnMotores;
+    @FXML
+    private TextField tfCod_Coche;
+    @FXML
+    private TextField tfMarca;
+    @FXML
+    private TextField tfModelo;
+    @FXML
+    private TextField tfAnio_Fabricacion;
+    @FXML
+    private TextField tfBastidor;
+    @FXML
+    private TextField tfPrecio;
+    @FXML
+    private TextField tfMatricula;
+    @FXML
+    private TextField tfMotor;
+    @FXML
+    private TextArea tfExtras;
+    @FXML
     private TableView tvCoches;
-
     @FXML
     private TableColumn tcCod_Coche;
-
     @FXML
     private TableColumn tcMarca;
     @FXML
@@ -40,7 +66,32 @@ public class HelloController {
     @FXML
     private TableColumn tcExtras;
 
+    public void borrarTF(){
+        tfCod_Coche.clear();
+        tfMarca.clear();
+        tfModelo.clear();
+        tfAnio_Fabricacion.clear();
+        tfBastidor.clear();
+        tfPrecio.clear();
+        tfMatricula.clear();
+        tfMotor.clear();
+        tfExtras.clear();
+    }
 
+    public void GoToAnnadir(ActionEvent event){
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Annadir.fxml"));
+        Parent root = null;
+        try {
+            root = fxmlLoader.load();
+        }catch (IOException E){
+
+        }
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setTitle("CONCESIONARIO");
+        stage.setScene(scene);
+        stage.show();
+    }
 
     public void mostrarDatos() {
        /* Dynamic TableView Data From Database
@@ -90,10 +141,7 @@ public class HelloController {
 
 
         } catch (Exception e) {
-            e.printStackTrace();
-            data.removeAll();
-            tvCoches.getColumns().clear();
-            tvCoches.setItems(null);
+
 
             System.out.println("Error on Building Data");
         }
@@ -114,15 +162,97 @@ public class HelloController {
                     auxiliar.setMotor(row.getItem().getMotor());
                     auxiliar.setExtras(row.getItem().getExtras());
 
-                    tfCod_Coche.setText(auxiliar.getCod_Coche());
-                    tfMarca.setText(auxiliar.getCity());
-                    tfPhone.setText(auxiliar.getPhone());
-                    tfAddress1.setText(auxiliar.getAddressLine1());
-                    tfAddress2.setText(auxiliar.getAddressLine2());
+
                 }
             });
             return row;
         });
+    }
+
+    public boolean Insertar(ActionEvent actionEvent) {
+        Concesionario auxiliar;
+        ObservableList<Object> data = FXCollections.observableArrayList();
+        int registrosAfectadosConsulta = 0;
+        Connection c;
+        try {
+            // Nos conectamos
+            c = DriverManager.getConnection("jdbc:mariadb://localhost:5555/noinch?useSSL=false"
+                    , "root",
+                    "adminer");
+            String SQL = "INSERT INTO Concesionario ("
+                    + " Cod_Coche ,"
+                    + " Marca ,"
+                    + " Modelo ,"
+                    + " Año_fabricacion ,"
+                    + " Bastidor ,"
+                    + " Precio ,"
+                    + " Matricula ,"
+                    + " Motor ,"
+                    + " Extras) "
+                    + " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            PreparedStatement st = c.prepareStatement(SQL);
+            st.setString(1, tfCod_Coche.getText());
+            st.setString(2, tfMarca.getText());
+            st.setString(3, tfModelo.getText());
+            st.setString(4, tfAnio_Fabricacion.getText());
+            st.setString(5, tfBastidor.getText());
+            st.setString(6, tfPrecio.getText());
+            st.setString(7, tfMatricula.getText());
+            st.setString(8, tfMotor.getText());
+            st.setString(9, tfExtras.getText());
+
+            registrosAfectadosConsulta = st.executeUpdate();
+
+            String Consulta = "SELECT * FROM Concesionario";
+            ResultSet datos= c.createStatement().executeQuery(Consulta);
+
+            while (datos.next()){
+                auxiliar = new Concesionario(
+                        datos.getString("Cod_Coche"),
+                        datos.getString("Marca"),
+                        datos.getString("Modelo"),
+                        datos.getString("año_fabricacion"),
+                        datos.getString("bastidor"),
+                        datos.getString("precio"),
+                        datos.getString("matricula"),
+                        datos.getString("motor"),
+                        datos.getString("extras"));
+
+                data.add(auxiliar);
+                System.out.println(auxiliar.toString());
+            }
+
+            tcCod_Coche.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Cod_Coche"));
+            tcMarca.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("marca"));
+            tcModelo.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("modelo"));
+            tcAnio_Fabricacion.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("anio_fabricacion"));
+            tcBastidor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("bastidor"));
+            tcPrecio.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("precio"));
+            tcMatricula.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("matricula"));
+            tcMotor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("motor"));
+            tcExtras.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("extras"));
+
+            tvCoches.setItems(data);
+            borrarTF();
+
+            // Ejecutamos la consulta preparada (con las ventajas de seguridad y velocidad en el servidor de BBDD
+            // nos devuelve el número de registros afectados. Al ser un Insert nos debe devolver 1 si se ha hecho correctamente
+
+            st.close();
+            c.close();
+
+            if (registrosAfectadosConsulta == 1) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error:" + e.toString());
+            return false;
+        }
     }
 
     @FXML
