@@ -18,7 +18,7 @@ public class HelloController {
     private Concesionario auxiliar;
 
     @FXML
-    private Button btnAnadir;
+    private Button btnAnadir, btnAtras;
     @FXML
     private Button btnBuscar;
     @FXML
@@ -79,18 +79,117 @@ public class HelloController {
     }
 
     public void GoToAnnadir(ActionEvent event){
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Annadir.fxml"));
-        Parent root = null;
+
         try {
-            root = fxmlLoader.load();
+            FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Annadir-view.fxml"));
+            Parent root = null;
+            root = fxmlLoader2.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("CONCESIONARIO");
+            stage.setScene(scene);
+            stage.show();
+
+            Stage stage2 = (Stage) this.btnAnadir.getScene().getWindow();
+            stage2.close();
         }catch (IOException E){
 
         }
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setTitle("CONCESIONARIO");
-        stage.setScene(scene);
-        stage.show();
+    }
+
+    public void GoToInicio(ActionEvent event){
+
+        try {
+            FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Inicio-view.fxml"));
+            Parent root = null;
+            root = fxmlLoader2.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("CONCESIONARIO");
+            stage.setScene(scene);
+            stage.show();
+
+            Stage stage3 = (Stage) this.btnAtras.getScene().getWindow();
+            stage3.close();
+        }catch (IOException E){
+
+        }
+    }
+
+    public void GoToEditar(ActionEvent event){
+
+        try {
+            FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Editar-view.fxml"));
+            Parent root = null;
+            root = fxmlLoader2.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("CONCESIONARIO");
+            stage.setScene(scene);
+            stage.show();
+
+            Stage stage4 = (Stage) this.btnEditar.getScene().getWindow();
+            stage4.close();
+        }catch (IOException E){
+
+        }
+    }
+
+    public void GoToBuscar(ActionEvent event){
+
+        try {
+            FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Buscar-view.fxml"));
+            Parent root = null;
+            root = fxmlLoader2.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("CONCESIONARIO");
+            stage.setScene(scene);
+            stage.show();
+
+            Stage stage5 = (Stage) this.btnBuscar.getScene().getWindow();
+            stage5.close();
+        }catch (IOException E){
+
+        }
+    }
+
+    public void GoToEliminar(ActionEvent event){
+
+        try {
+            FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Eliminar-view.fxml"));
+            Parent root = null;
+            root = fxmlLoader2.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("CONCESIONARIO");
+            stage.setScene(scene);
+            stage.show();
+
+            Stage stage6 = (Stage) this.btnEliminar.getScene().getWindow();
+            stage6.close();
+        }catch (IOException E){
+
+        }
+    }
+
+    public void GoToMotores(ActionEvent event){
+
+        try {
+            FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Motores-view.fxml"));
+            Parent root = null;
+            root = fxmlLoader2.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("CONCESIONARIO");
+            stage.setScene(scene);
+            stage.show();
+
+            Stage stage7 = (Stage) this.btnMotores.getScene().getWindow();
+            stage7.close();
+        }catch (IOException E){
+
+        }
     }
 
     public void mostrarDatos() {
@@ -256,7 +355,7 @@ public class HelloController {
     }
 
     @FXML
-    public void initialize(){
+    public void init(){
 
         mostrarDatos();
     }

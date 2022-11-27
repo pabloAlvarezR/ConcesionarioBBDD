@@ -24,17 +24,21 @@
       <RowConstraints maxHeight="428.0" minHeight="10.0" prefHeight="109.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="428.0" minHeight="5.0" prefHeight="131.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="428.0" minHeight="10.0" prefHeight="88.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="428.0" minHeight="10.0" prefHeight="88.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="428.0" minHeight="10.0" prefHeight="88.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="428.0" minHeight="10.0" prefHeight="88.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="428.0" minHeight="10.0" prefHeight="88.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label text="Concesionario Franciso González S. L. " textFill="WHITE" GridPane.columnSpan="2">
+      <Label text="Concesionario Franciso González S. L. " textFill="WHITE" GridPane.columnSpan="2" GridPane.rowIndex="1">
          <font>
             <Font name="Sitka Text" size="35.0" />
          </font>
          <GridPane.margin>
-            <Insets left="120.0" />
+            <Insets bottom="60.0" left="120.0" />
          </GridPane.margin>
       </Label>
-      <TableView fx:id="tvCoches" editable="true" fixedCellSize="0.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #303030;" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2147483647">
+      <TableView fx:id="tvCoches" editable="true" fixedCellSize="0.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #303030;" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="8">
         <columns>
           <TableColumn fx:id="tcCod_Coche" prefWidth="71.0" text="Cod_Coche" />
           <TableColumn fx:id="tcMarca" prefWidth="79.0" text="Marca" />
@@ -50,41 +54,55 @@
             <Insets bottom="20.0" right="20.0" />
          </GridPane.margin>
       </TableView>
-      <Button fx:id="btnAnadir" alignment="BASELINE_LEFT" onAction="#GoToAnnadir" mnemonicParsing="false" prefWidth="230.0" style="-fx-background-color: #6291b3;" text="     Añadir" GridPane.rowIndex="2">
-         <GridPane.margin>
-            <Insets />
-         </GridPane.margin>
-         <font>
-            <Font name="Verdana Bold" size="17.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnBuscar" alignment="BASELINE_LEFT" mnemonicParsing="false" prefWidth="230.0" style="-fx-background-color: #6291b3;" text="     Buscar" GridPane.rowIndex="1">
-         <font>
-            <Font name="Verdana Bold" size="17.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnEditar" alignment="BASELINE_LEFT" mnemonicParsing="false" prefWidth="230.0" style="-fx-background-color: #6291b3;" text="     Editar" GridPane.rowIndex="3">
-         <font>
-            <Font name="Verdana Bold" size="17.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnEliminar" alignment="BASELINE_LEFT" mnemonicParsing="false" prefWidth="230.0" style="-fx-background-color: #6291b3;" text="     Eliminar" GridPane.rowIndex="4">
-         <font>
-            <Font name="Verdana Bold" size="17.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnMotores" alignment="BASELINE_LEFT" mnemonicParsing="false" prefWidth="230.0" style="-fx-background-color: #6291b3;" text="     Motores" GridPane.rowIndex="5">
-         <font>
-            <Font name="Verdana Bold" size="17.0" />
-         </font>
-      </Button>
       <ImageView fitHeight="82.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/peugeot-logo.png" />
          </image>
          <GridPane.margin>
-            <Insets left="20.0" top="30.0" />
+            <Insets left="20.0" top="80.0" />
          </GridPane.margin>
       </ImageView>
+      <GridPane GridPane.rowIndex="2" GridPane.rowSpan="7">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Button fx:id="btnAnadir" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#GoToAnnadir" prefWidth="230.0" style="-fx-background-color: #6291b3;" text="     Añadir" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+               <font>
+                  <Font name="Verdana Bold" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnBuscar" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#GoToBuscar" prefWidth="230.0" style="-fx-background-color: #6291b3;" text="     Buscar">
+               <font>
+                  <Font name="Verdana Bold" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnEditar" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#GoToEditar" prefWidth="230.0" style="-fx-background-color: #6291b3;" text="     Editar" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Verdana Bold" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnEliminar" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#GoToEliminar" prefWidth="230.0" style="-fx-background-color: #6291b3;" text="     Eliminar" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Verdana Bold" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnMotores" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#GoToMotores" prefWidth="230.0" style="-fx-background-color: #6291b3;" text="     Motores" GridPane.rowIndex="4">
+               <font>
+                  <Font name="Verdana Bold" size="17.0" />
+               </font>
+            </Button>
+         </children>
+      </GridPane>
    </children>
 </GridPane>
