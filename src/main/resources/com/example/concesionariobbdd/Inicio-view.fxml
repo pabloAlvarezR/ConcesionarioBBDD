@@ -104,5 +104,13 @@
             </Button>
          </children>
       </GridPane>
+      <Label style="-fx-border-color: #c7b832; -fx-border-width: 4; -fx-border-radius: 5;" text="🏠Inicio" textFill="#6291b3" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Verdana" size="39.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="30.0" right="30.0" />
+         </GridPane.margin>
+      </Label>
    </children>
 </GridPane>
