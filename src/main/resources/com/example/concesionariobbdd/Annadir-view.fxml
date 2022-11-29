@@ -47,7 +47,7 @@
             <Insets left="20.0" top="30.0" />
          </GridPane.margin>
       </ImageView>
-      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Cod_Coche" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Marca" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="30.0" />
          </GridPane.margin>
@@ -55,7 +55,7 @@
             <Font name="Verdana" size="17.0" />
          </font>
       </Text>
-      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Marca" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Modelo" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="30.0" />
          </GridPane.margin>
@@ -63,7 +63,7 @@
             <Font name="Verdana" size="17.0" />
          </font>
       </Text>
-      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Modelo" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Año Fabricacion" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets left="30.0" />
          </GridPane.margin>
@@ -71,7 +71,7 @@
             <Font name="Verdana" size="17.0" />
          </font>
       </Text>
-      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Año Fabricacion" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Bastidor" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets left="30.0" />
          </GridPane.margin>
@@ -79,7 +79,7 @@
             <Font name="Verdana" size="17.0" />
          </font>
       </Text>
-      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Bastidor" GridPane.columnIndex="1" GridPane.rowIndex="5">
+      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <GridPane.margin>
             <Insets left="30.0" />
          </GridPane.margin>
@@ -87,7 +87,7 @@
             <Font name="Verdana" size="17.0" />
          </font>
       </Text>
-      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio" GridPane.columnIndex="1" GridPane.rowIndex="6">
+      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Matricula" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <GridPane.margin>
             <Insets left="30.0" />
          </GridPane.margin>
@@ -95,7 +95,7 @@
             <Font name="Verdana" size="17.0" />
          </font>
       </Text>
-      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Matricula" GridPane.columnIndex="1" GridPane.rowIndex="7">
+      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Motor" GridPane.columnIndex="1" GridPane.rowIndex="7">
          <GridPane.margin>
             <Insets left="30.0" />
          </GridPane.margin>
@@ -103,65 +103,52 @@
             <Font name="Verdana" size="17.0" />
          </font>
       </Text>
-      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Motor" GridPane.columnIndex="1" GridPane.rowIndex="8">
+      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Extras" GridPane.columnIndex="1" GridPane.rowIndex="8">
          <GridPane.margin>
-            <Insets left="30.0" />
+            <Insets left="30.0" top="30.0" />
          </GridPane.margin>
          <font>
             <Font name="Verdana" size="17.0" />
          </font>
       </Text>
-      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Extras" GridPane.columnIndex="1" GridPane.rowIndex="9">
-         <GridPane.margin>
-            <Insets left="30.0" />
-         </GridPane.margin>
-         <font>
-            <Font name="Verdana" size="17.0" />
-         </font>
-      </Text>
-      <TextField fx:id="tfCod_Coche" prefWidth="753.0" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <TextField fx:id="tfMarca" prefHeight="28.0" prefWidth="753.0" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="180.0" right="130.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="tfMarca" prefHeight="28.0" prefWidth="753.0" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <TextField fx:id="tfModelo" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="180.0" right="130.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="tfModelo" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <TextField fx:id="tfAnio_Fabricacion" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets left="180.0" right="130.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="tfAnio_Fabricacion" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <TextField fx:id="tfBastidor" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets left="180.0" right="130.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="tfBastidor" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+      <TextField fx:id="tfPrecio" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <GridPane.margin>
             <Insets left="180.0" right="130.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="tfPrecio" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="6">
+      <TextField fx:id="tfMatricula" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <GridPane.margin>
             <Insets left="180.0" right="130.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="tfMatricula" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="7">
+      <TextField fx:id="tfMotor" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="7">
          <GridPane.margin>
             <Insets left="180.0" right="130.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="tfMotor" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="8">
+      <TextArea fx:id="tfExtras" prefHeight="76.0" prefWidth="453.0" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="8" GridPane.rowSpan="2">
          <GridPane.margin>
-            <Insets left="180.0" right="130.0" />
-         </GridPane.margin>
-      </TextField>
-      <TextArea fx:id="tfExtras" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="9">
-         <GridPane.margin>
-            <Insets bottom="20.0" left="180.0" right="130.0" top="20.0" />
+            <Insets bottom="80.0" left="180.0" right="130.0" top="20.0" />
          </GridPane.margin>
       </TextArea>
       <Button fx:id="btnAtras" mnemonicParsing="false" onAction="#GoToInicio" style="-fx-background-color: #6291b3;" text="⬅" GridPane.rowIndex="1">
@@ -217,12 +204,12 @@
             </Button>
          </children>
       </GridPane>
-      <Button mnemonicParsing="false" onAction="#Insertar" style="-fx-background-color: #6fc920;" text="Añadir" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="9" GridPane.valignment="CENTER">
+      <Button mnemonicParsing="false" onAction="#Insertar" style="-fx-background-color: #6fc920;" text="Añadir" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
          <GridPane.margin>
-            <Insets right="30.0" />
+            <Insets />
          </GridPane.margin>
       </Button>
    </children>

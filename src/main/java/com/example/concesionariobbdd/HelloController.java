@@ -67,7 +67,6 @@ public class HelloController {
     private TableColumn tcExtras;
 
     public void borrarTF(){
-        tfCod_Coche.clear();
         tfMarca.clear();
         tfModelo.clear();
         tfAnio_Fabricacion.clear();
@@ -290,7 +289,7 @@ public class HelloController {
                     + " Precio ,"
                     + " Matricula ,"
                     + " Motor ,"
-                    + " Extras) "
+                    + " Extras )"
                     + " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement st = c.prepareStatement(SQL);
@@ -308,6 +307,9 @@ public class HelloController {
 
 
             borrarTF();
+            Alert alert;
+            alert = new Alert(Alert.AlertType.INFORMATION, "Se ha añadido los datos a la tabla", ButtonType.OK);
+            alert.showAndWait();
 
             // Ejecutamos la consulta preparada (con las ventajas de seguridad y velocidad en el servidor de BBDD
             // nos devuelve el número de registros afectados. Al ser un Insert nos debe devolver 1 si se ha hecho correctamente
@@ -325,56 +327,6 @@ public class HelloController {
             e.printStackTrace();
             System.out.println("Error:" + e.toString());
             return false;
-        }
-    }
-
-
-    public void actualizar() {
-        Connection c;
-
-
-        try {
-            // Nos conectamos
-            c = DriverManager.getConnection("jdbc:mariadb://localhost:5555/Concesionario?useSSL=false"
-                    , "root",
-                    "adminer");
-            String SQL = "INSERT INTO Coches ("
-                    + " Cod_Coche ,"
-                    + " Marca ,"
-                    + " Modelo ,"
-                    + " Año_Fabricacion ,"
-                    + " Bastidor ,"
-                    + " Precio ,"
-                    + " Matricula ,"
-                    + " Motor ,"
-                    + " Extras) "
-                    + " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-            PreparedStatement st = c.prepareStatement(SQL);
-
-            st.setString(1, tfCod_Coche.getText());
-            st.setString(2, tfMarca.getText());
-            st.setString(3, tfModelo.getText());
-            st.setString(4, tfAnio_Fabricacion.getText());
-            st.setString(5, tfBastidor.getText());
-            st.setString(6, tfPrecio.getText());
-            st.setString(7, tfMatricula.getText());
-            st.setString(8, tfMotor.getText());
-            st.setString(9, tfExtras.getText());
-
-            // Ejecutamos la consulta preparada (con las ventajas de seguridad y velocidad en el servidor de BBDD
-            // nos devuelve el número de registros afectados. Al ser un Update nos debe devolver 1 si se ha hecho correctamente
-            st.executeUpdate();
-            mostrarDatos();
-            borrarTF();
-            st.close();
-            c.close();
-
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Error:" + e.toString());
         }
     }
 

@@ -49,7 +49,7 @@
             <Insets left="20.0" top="30.0" />
          </GridPane.margin>
       </ImageView>
-      <Button fx:id="btnAtras" mnemonicParsing="false" onAction="#GoToAnnadir" style="-fx-background-color: #6291b3;" text="⬅" GridPane.rowIndex="1">
+      <Button fx:id="btnAtras" mnemonicParsing="false" onAction="#GoToInicio" style="-fx-background-color: #6291b3;" text="⬅" GridPane.rowIndex="1">
          <font>
             <Font size="15.0" />
          </font>
@@ -205,7 +205,7 @@
                   <Font name="Verdana Bold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="btnEditar"  alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#GoToEditar" prefWidth="230.0" style="-fx-background-color: #6291b3; -fx-border-color: #c7b832; -fx-border-width: 4; -fx-border-radius: 2;" text="     Editar" GridPane.rowIndex="2">
+            <Button fx:id="btnEditar" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#GoToEditar" prefWidth="230.0" style="-fx-background-color: #6291b3; -fx-border-color: #c7b832; -fx-border-width: 4; -fx-border-radius: 2;" text="     Editar" GridPane.rowIndex="2">
                <font>
                   <Font name="Verdana Bold" size="17.0" />
                </font>
@@ -222,7 +222,7 @@
             </Button>
          </children>
       </GridPane>
-      <Button fx:id="btnActualizar" onAction="#actualizar" mnemonicParsing="false" style="-fx-background-color: #c9be20;" text="Editar" GridPane.rowIndex="9">
+      <Button fx:id="btnActualizar" mnemonicParsing="false" onAction="#actualizar" style="-fx-background-color: #f5f542;" text="Editar" GridPane.rowIndex="9">
          <font>
             <Font size="16.0" />
          </font>

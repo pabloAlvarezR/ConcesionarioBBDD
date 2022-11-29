@@ -12,9 +12,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
-public class EditarController {
+public class EliminarController {
     private Concesionario auxiliar;
 
     @FXML
@@ -68,14 +71,6 @@ public class EditarController {
 
     public void borrarTF(){
         tfCod_Coche.clear();
-        tfMarca.clear();
-        tfModelo.clear();
-        tfAnio_Fabricacion.clear();
-        tfBastidor.clear();
-        tfPrecio.clear();
-        tfMatricula.clear();
-        tfMotor.clear();
-        tfExtras.clear();
     }
 
     public void GoToAnnadir(ActionEvent event){
@@ -317,24 +312,9 @@ public class EditarController {
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     auxiliar.setCod_Coche(row.getItem().getCod_Coche());
-                    auxiliar.setmarca(row.getItem().getMarca());
-                    auxiliar.setModelo(row.getItem().getModelo());
-                    auxiliar.setAnio_fabricacion(row.getItem().getAnio_fabricacion());
-                    auxiliar.setBastidor(row.getItem().getBastidor());
-                    auxiliar.setPrecio(row.getItem().getPrecio());
-                    auxiliar.setMatricula(row.getItem().getMatricula());
-                    auxiliar.setMotor(row.getItem().getMotor());
-                    auxiliar.setExtras(row.getItem().getExtras());
 
                     tfCod_Coche.setText(auxiliar.getCod_Coche());
-                    tfMarca.setText(auxiliar.getMarca());
-                    tfModelo.setText(auxiliar.getModelo());
-                    tfAnio_Fabricacion.setText(auxiliar.getAnio_fabricacion());
-                    tfBastidor.setText(auxiliar.getBastidor());
-                    tfPrecio.setText(auxiliar.getPrecio());
-                    tfMatricula.setText(auxiliar.getMatricula());
-                    tfMotor.setText(auxiliar.getMotor());
-                    tfExtras.setText(auxiliar.getExtras());
+
                 }
             });
             return row;
