@@ -21,7 +21,7 @@ public class MotoresController {
     private Motores auxiliar;
 
     @FXML
-    private Button btnAnadir, btnAtras;
+    private Button btnAnadir, btnAtras, btnAnnadirMotor;
     @FXML
     private Button btnBuscar;
     @FXML
@@ -40,6 +40,8 @@ public class MotoresController {
     private TableColumn tcCilindrada;
     @FXML
     private TableColumn tcCilindros;
+    @FXML
+    private TextField tfCod_Motor, tfPotencia, tfCilindrada, tfCilindros;
 
 
 
@@ -161,6 +163,76 @@ public class MotoresController {
         }
     }
 
+    public void GoToAnnadirMot(ActionEvent event){
+
+
+        FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("AnnadirMot-view.fxml"));
+        Parent root = null;
+        try {
+            root = fxmlLoader2.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setTitle("Añadir nuevo motor");
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    public boolean Insertar(ActionEvent actionEvent) {
+        Concesionario auxiliar;
+        ObservableList<Object> data = FXCollections.observableArrayList();
+        int registrosAfectadosConsulta = 0;
+        Connection c;
+        try {
+            // Nos conectamos
+            c = DriverManager.getConnection("jdbc:mariadb://localhost:5555/Concesionario?useSSL=false"
+                    , "root",
+                    "adminer");
+            String SQL = "INSERT INTO motor ("
+                    + " Cod_Motor ,"
+                    + " Potencia ,"
+                    + " Cilindrada ,"
+                    + " Cilindros )"
+                    + " VALUES ( ?, ?, ?, ?)";
+
+            PreparedStatement st = c.prepareStatement(SQL);
+
+            st.setString(1, tfCod_Motor.getText());
+            st.setString(2, tfPotencia.getText());
+            st.setString(3, tfCilindrada.getText());
+            st.setString(4, tfCilindros.getText());
+
+            registrosAfectadosConsulta = st.executeUpdate();
+
+
+            borrarTF();
+            Alert alert;
+            alert = new Alert(Alert.AlertType.INFORMATION, "Se ha añadido los datos a la tabla", ButtonType.OK);
+            alert.showAndWait();
+
+            // Ejecutamos la consulta preparada (con las ventajas de seguridad y velocidad en el servidor de BBDD
+            // nos devuelve el número de registros afectados. Al ser un Insert nos debe devolver 1 si se ha hecho correctamente
+
+            st.close();
+            c.close();
+
+            if (registrosAfectadosConsulta == 1) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error:" + e.toString());
+            return false;
+        }
+    }
+
     public void mostrarDatos() {
        /* Dynamic TableView Data From Database
           BY Narayan G. Maharjan https://blog.ngopal.com.np/2011/10/19/dyanmic-tableview-data-from-database/comment-page-1/
@@ -203,6 +275,13 @@ public class MotoresController {
             System.out.println("Error on Building Data");
             System.out.println(e);
         }
+    }
+
+    public void borrarTF(){
+        tfCod_Motor.clear();
+        tfPotencia.clear();
+        tfCilindros.clear();
+        tfCilindrada.clear();
     }
 
     @FXML
