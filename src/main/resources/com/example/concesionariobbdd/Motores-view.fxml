@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -123,7 +124,7 @@
                   <Font name="Verdana" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnEliminarMotores" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="3.0" mnemonicParsing="false" style="-fx-background-color: #e84343;" text="❌Eliminar❌" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+            <Button fx:id="btnEliminarMotores" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="3.0" mnemonicParsing="false" onAction="#borrar" style="-fx-background-color: #e84343;" text="❌Eliminar❌" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>
@@ -133,7 +134,7 @@
                   <Font name="Verdana" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnAñadirMotores" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="3.0" mnemonicParsing="false" style="-fx-background-color: #6fc920;" text="➕Añadir➕" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <Button fx:id="btnAñadirMotores" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="3.0" mnemonicParsing="false" onAction="#GoToAnnadirMot" style="-fx-background-color: #6fc920;" text="➕Añadir➕" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -149,5 +150,10 @@
             <Insets bottom="10.0" />
          </padding>
       </GridPane>
+      <TextField fx:id="tfCod_Motor" opacity="0.0" GridPane.rowIndex="6">
+         <GridPane.margin>
+            <Insets left="100.0" right="70.0" />
+         </GridPane.margin>
+      </TextField>
    </children>
 </GridPane>

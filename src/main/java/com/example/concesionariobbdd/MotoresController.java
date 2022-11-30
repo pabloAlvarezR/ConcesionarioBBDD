@@ -180,6 +180,9 @@ public class MotoresController {
         stage.setScene(scene);
         stage.show();
 
+        Stage stage8 = (Stage) this.btnMotores.getScene().getWindow();
+        stage8.close();
+
     }
 
     public boolean Insertar(ActionEvent actionEvent) {
@@ -193,7 +196,7 @@ public class MotoresController {
                     , "root",
                     "adminer");
             String SQL = "INSERT INTO motor ("
-                    + " Cod_Motor ,"
+                    + " IdMotor ,"
                     + " Potencia ,"
                     + " Cilindrada ,"
                     + " Cilindros )"
@@ -214,11 +217,29 @@ public class MotoresController {
             alert = new Alert(Alert.AlertType.INFORMATION, "Se ha añadido los datos a la tabla", ButtonType.OK);
             alert.showAndWait();
 
+
             // Ejecutamos la consulta preparada (con las ventajas de seguridad y velocidad en el servidor de BBDD
             // nos devuelve el número de registros afectados. Al ser un Insert nos debe devolver 1 si se ha hecho correctamente
 
             st.close();
             c.close();
+
+            FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Motores-view.fxml"));
+            Parent root = null;
+            try {
+                root = fxmlLoader2.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("Concesionario");
+            stage.setScene(scene);
+            stage.show();
+
+            Stage stage8 = (Stage) this.btnAnnadirMotor.getScene().getWindow();
+            stage8.close();
 
             if (registrosAfectadosConsulta == 1) {
                 return true;
@@ -231,6 +252,56 @@ public class MotoresController {
             System.out.println("Error:" + e.toString());
             return false;
         }
+    }
+
+    public void borrar(ActionEvent event) {
+        Connection c;
+
+        Alert alert;
+        alert = new Alert(Alert.AlertType.CONFIRMATION, "¿Estas seguro de que quieres borrar?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+        alert.showAndWait();
+        if (alert.getResult() == ButtonType.YES) {
+            try {
+                // Nos conectamos
+                c = DriverManager.getConnection("jdbc:mariadb://localhost:5555/Concesionario?useSSL=false"
+                        , "root",
+                        "adminer");
+                String SQL = "DELETE FROM motor "
+                        + " WHERE IdMotor = ? ";
+                PreparedStatement st = c.prepareStatement(SQL);
+
+                st.setString(1, tfCod_Motor.getText());
+
+                // Ejecutamos la consulta preparada (con las ventajas de seguridad y velocidad en el servidor de BBDD
+                // nos devuelve el número de registros afectados. Al ser un Delete nos debe devolver 1 si se ha hecho correctamente
+                st.executeUpdate();
+
+                mostrarDatos();
+                tfCod_Motor.clear();
+                st.close();
+                c.close();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("Error:" + e.toString());
+
+            }
+        }
+    }
+
+    private void cargarGestorDobleCLick () {
+        tvMotores.setRowFactory(tv -> {
+            TableRow<Motores> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                    auxiliar.setCod_Motor(row.getItem().getCod_Motor());
+
+                    tfCod_Motor.setText(auxiliar.getCod_Motor());
+
+                }
+            });
+            return row;
+        });
     }
 
     public void mostrarDatos() {
@@ -286,6 +357,7 @@ public class MotoresController {
 
     @FXML
     public void initialize(){
+        cargarGestorDobleCLick();
         mostrarDatos();
     }
 }
