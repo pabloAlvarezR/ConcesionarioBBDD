@@ -21,7 +21,7 @@ public class MotoresController {
     private Motores auxiliar;
 
     @FXML
-    private Button btnAnadir, btnAtras, btnAnnadirMotor;
+    private Button btnAnadir, btnAtras, btnAnnadirMotor, btnEditarMotores;
     @FXML
     private Button btnBuscar;
     @FXML
@@ -70,7 +70,7 @@ public class MotoresController {
     public void GoToInicio(ActionEvent event){
 
         try {
-            FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Inicio-view.fxml"));
+            FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Motores-view.fxml"));
             Parent root = null;
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
@@ -89,7 +89,7 @@ public class MotoresController {
     public void GoToEditar(ActionEvent event){
 
         try {
-            FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Editar-view.fxml"));
+            FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("EditarMot-view.fxml"));
             Parent root = null;
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
@@ -100,7 +100,6 @@ public class MotoresController {
 
             Stage stage4 = (Stage) this.btnEditar.getScene().getWindow();
             stage4.close();
-
         }catch (IOException E){
 
         }
@@ -254,6 +253,60 @@ public class MotoresController {
         }
     }
 
+    public Boolean actualizar(ActionEvent event) {
+        Connection c;
+        int registrosAfectadosConsulta = 0;
+
+        try {
+            // Nos conectamos
+            c = DriverManager.getConnection("jdbc:mariadb://localhost:5555/Concesionario?useSSL=false"
+                    , "root",
+                    "adminer");
+            String SQL = "UPDATE motor "
+                    + " SET "
+                    + " Potencia =? ,"
+                    + " Cilindrada =? ,"
+                    + " Cilindros =? "
+                    + " WHERE IdMotor = ? ";
+
+            PreparedStatement st = c.prepareStatement(SQL);
+
+            st.setString(1, tfPotencia.getText());
+            st.setString(2, tfCilindrada.getText());
+            st.setString(3, tfCilindros.getText());
+
+            st.setString(4, tfCod_Motor.getText());
+
+            // Ejecutamos la consulta preparada (con las ventajas de seguridad y velocidad en el servidor de BBDD
+            // nos devuelve el número de registros afectados. Al ser un Update nos debe devolver 1 si se ha hecho correctamente
+            registrosAfectadosConsulta = st.executeUpdate();
+            if(tfCod_Motor.getText() == ""){
+                Alert alert;
+                alert = new Alert(Alert.AlertType.WARNING, "No se ha modificado ningun dato", ButtonType.OK);
+                alert.showAndWait();
+            }else {
+                Alert alert;
+                alert = new Alert(Alert.AlertType.INFORMATION, "Se han modificado los datos de la tabla", ButtonType.OK);
+                alert.showAndWait();
+            }
+            mostrarDatos();
+            borrarTF();
+            st.close();
+            c.close();
+
+            if (registrosAfectadosConsulta == 1) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error:" + e.toString());
+            return false;
+        }
+    }
+
     public void borrar(ActionEvent event) {
         Connection c;
 
@@ -290,18 +343,29 @@ public class MotoresController {
     }
 
     private void cargarGestorDobleCLick () {
-        tvMotores.setRowFactory(tv -> {
-            TableRow<Motores> row = new TableRow<>();
-            row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && (!row.isEmpty())) {
-                    auxiliar.setCod_Motor(row.getItem().getCod_Motor());
+        if(tvMotores == null){
 
-                    tfCod_Motor.setText(auxiliar.getCod_Motor());
+        }else{
+            tvMotores.setRowFactory(tv -> {
+                TableRow<Motores> row = new TableRow<>();
+                row.setOnMouseClicked(event -> {
+                    if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                        auxiliar.setCod_Motor(row.getItem().getCod_Motor());
+                        auxiliar.setPotencia(row.getItem().getPotencia());
+                        auxiliar.setCilindrada(row.getItem().getCilindrada());
+                        auxiliar.setCilindros(row.getItem().getCilindros());
 
-                }
+                        tfCod_Motor.setText(auxiliar.getCod_Motor());
+                        tfPotencia.setText(auxiliar.getPotencia());
+                        tfCilindrada.setText(auxiliar.getCilindrada());
+                        tfCilindros.setText(auxiliar.getCilindros());
+
+                    }
+                });
+                return row;
             });
-            return row;
-        });
+        }
+
     }
 
     public void mostrarDatos() {

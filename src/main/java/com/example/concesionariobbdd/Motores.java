@@ -26,7 +26,7 @@ public class Motores {
     }
 
     public void setCilindrada(String Cilindrada) {
-        this.Cilindros = Cilindrada;
+        this.Cilindrada = Cilindrada;
     }
 
     public void setCilindros(String Cilindros) {
