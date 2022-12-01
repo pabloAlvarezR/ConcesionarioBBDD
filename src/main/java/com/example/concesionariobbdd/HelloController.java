@@ -3,6 +3,7 @@ package com.example.concesionariobbdd;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -80,22 +81,23 @@ public class HelloController {
     public void GoToAnnadir(ActionEvent event){
 
 
-            FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Annadir-view.fxml"));
-            Parent root = null;
+        FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Annadir-view.fxml"));
+        Parent root = null;
         try {
             root = fxmlLoader2.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setTitle("CONCESIONARIO");
-            stage.setScene(scene);
-            stage.show();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
 
-            Stage stage2 = (Stage) this.btnAnadir.getScene().getWindow();
-            stage2.close();
+        Stage stage2 = (Stage) this.btnAnadir.getScene().getWindow();
+        stage2.close();
 
     }
 
@@ -107,7 +109,8 @@ public class HelloController {
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("CONCESIONARIO");
+            stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
 
@@ -126,13 +129,13 @@ public class HelloController {
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("CONCESIONARIO");
+            stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
 
             Stage stage4 = (Stage) this.btnEditar.getScene().getWindow();
             stage4.close();
-
         }catch (IOException E){
 
         }
@@ -146,7 +149,8 @@ public class HelloController {
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("CONCESIONARIO");
+            stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
 
@@ -165,7 +169,8 @@ public class HelloController {
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("CONCESIONARIO");
+            stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
 
@@ -184,7 +189,8 @@ public class HelloController {
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("CONCESIONARIO");
+            stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
 
@@ -468,6 +474,18 @@ public class HelloController {
             e.printStackTrace();
             System.out.println("Error:" + e.toString());
             return false;
+        }
+    }
+
+
+
+    public void Coche(Event event) {
+        TiempoEjecucion coche = new TiempoEjecucion();
+        Stage stage = new Stage();
+        try {
+            coche.start(stage);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

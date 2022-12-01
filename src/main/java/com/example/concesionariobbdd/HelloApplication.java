@@ -13,6 +13,7 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Inicio-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1033, 609);
         stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }

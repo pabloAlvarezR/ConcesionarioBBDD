@@ -21,32 +21,16 @@ public class MotoresController {
     private Motores auxiliar;
 
     @FXML
-    private Button btnAnadir, btnAtras, btnAnnadirMotor, btnEditarMotores, btnBuscarMotores;
-    @FXML
-    private Button btnBuscar;
-    @FXML
-    private Button btnEditar;
-    @FXML
-    private Button btnEliminar;
-    @FXML
-    private Button btnMotores;
+    private Button btnAnadir, btnAtras, btnAnnadirMotor, btnEditarMotores, btnBuscarMotores, btnBuscar, btnEditar, btnEliminar, btnMotores;
     @FXML
     private TableView tvMotores;
     @FXML
-    private TableColumn tcCod_Motor;
-    @FXML
-    private TableColumn tcPotencia;
-    @FXML
-    private TableColumn tcCilindrada;
-    @FXML
-    private TableColumn tcCilindros;
+    private TableColumn tcCod_Motor,tcPotencia, tcCilindrada, tcCilindros;
     @FXML
     private TextField tfCod_Motor, tfPotencia, tfCilindrada, tfCilindros, tfPotenciaMin, tfPotenciaMax;
 
 
     public void GoToAnnadir(ActionEvent event){
-
-
             FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Annadir-view.fxml"));
             Parent root = null;
         try {

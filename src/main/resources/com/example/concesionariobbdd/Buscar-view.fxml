@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="1033.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.concesionariobbdd.HelloController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="1033.0" style="-fx-background-color: #000000;" stylesheets="@../../../style/st.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.concesionariobbdd.HelloController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="445.0" minWidth="10.0" prefWidth="232.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="767.0" minWidth="10.0" prefWidth="767.0" />
@@ -62,14 +62,14 @@
       </Button>
       <TableView fx:id="tvCoches" editable="true" fixedCellSize="0.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #303030;" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="6">
          <columns>
-            <TableColumn fx:id="tcCod_Coche" prefWidth="71.0" text="Cod_Coche" />
-            <TableColumn fx:id="tcMarca" prefWidth="79.0" text="Marca" />
+            <TableColumn fx:id="tcCod_Coche" prefWidth="94.0" text="Cod_Coche" />
+            <TableColumn fx:id="tcMarca" prefWidth="56.0" text="Marca" />
             <TableColumn fx:id="tcModelo" prefWidth="75.0" text="Modelo" />
-            <TableColumn fx:id="tcAnio_Fabricacion" prefWidth="97.0" text="Año Fabricacion" />
-            <TableColumn fx:id="tcBastidor" prefWidth="82.0" text="Bastidor" />
-            <TableColumn fx:id="tcPrecio" prefWidth="58.0" text="Precio" />
-            <TableColumn fx:id="tcMatricula" prefWidth="74.0" text="Matricula" />
-            <TableColumn fx:id="tcMotor" prefWidth="97.0" text="Motor" />
+            <TableColumn fx:id="tcAnio_Fabricacion" prefWidth="132.0" text="Año Fabricacion" />
+            <TableColumn fx:id="tcBastidor" prefWidth="71.0" text="Bastidor" />
+            <TableColumn fx:id="tcPrecio" prefWidth="54.0" text="Precio" />
+            <TableColumn fx:id="tcMatricula" prefWidth="93.0" text="Matricula" />
+            <TableColumn fx:id="tcMotor" prefWidth="58.0" text="Motor" />
             <TableColumn fx:id="tcExtras" prefWidth="133.0" text="Extras" />
          </columns>
          <GridPane.margin>
