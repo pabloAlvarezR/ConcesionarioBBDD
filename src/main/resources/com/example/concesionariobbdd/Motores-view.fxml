@@ -119,7 +119,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="btnBuscarMotores" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="3.0" mnemonicParsing="false" style="-fx-background-color: #007cd4;" text="🔎Buscar🔎" GridPane.halignment="CENTER">
+            <Button fx:id="btnBuscarMotores" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="3.0" mnemonicParsing="false" onAction="#GoToBuscarMot" style="-fx-background-color: #007cd4;" text="🔎Buscar🔎" GridPane.halignment="CENTER">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>

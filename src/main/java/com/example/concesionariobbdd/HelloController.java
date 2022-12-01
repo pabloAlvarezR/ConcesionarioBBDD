@@ -28,7 +28,7 @@ public class HelloController {
     @FXML
     private Button btnMotores;
     @FXML
-    private TextField tfCod_Coche;
+    private TextField tfCod_Coche , tfPrecioMax, tfPrecioMin;
     @FXML
     private TextField tfMarca;
     @FXML
@@ -270,6 +270,147 @@ public class HelloController {
             return row;
         });
     }*/
+
+    public boolean buscarCod_Coche(ActionEvent actionEvent) {
+        ObservableList<Concesionario> data = null;
+        try {
+            Connection conexionBBDD;
+
+            Concesionario auxiliar;
+            data = FXCollections.observableArrayList();
+            Connection c = null;
+            c = DriverManager.getConnection("jdbc:mariadb://localhost:5555/Concesionario?useSSL=false"
+                    , "root",
+                    "adminer");
+            ;
+            //hacemos la consulta con los datos que queremos sacar
+            String SQL = "SELECT * " + "FROM coches where Cod_Coche like \"%"+tfCod_Coche.getText()+"%\"";
+            ResultSet datos = c.createStatement().executeQuery(SQL);
+            System.out.println(datos.toString());
+
+            //esto nos da unos datos pero tenemos que mostrarlo en la tabla
+            //de esta forma los mostramos en la tabla
+                while (datos.next()){
+                    auxiliar = new Concesionario(
+                            datos.getString("Cod_Coche"),
+                            datos.getString("Marca"),
+                            datos.getString("Modelo"),
+                            datos.getString("año_fabricacion"),
+                            datos.getString("bastidor"),
+                            datos.getString("precio"),
+                            datos.getString("matricula"),
+                            datos.getString("motor"),
+                            datos.getString("extras"));
+
+
+                data.add(auxiliar);
+                //System.out.println(auxiliar.toString());
+            }
+            //esto es para poner los datos en la tabla para ello simplemnete le ponemos que en el id de cada columna de la tabla le aplique
+            //su dato es decir para oficina pues el codigo que tenemos en el array  y asi con cada dato
+            tcCod_Coche.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Cod_Coche"));
+            tcMarca.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("marca"));
+            tcModelo.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("modelo"));
+            tcAnio_Fabricacion.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("anio_fabricacion"));
+            tcBastidor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("bastidor"));
+            tcPrecio.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("precio"));
+            tcMatricula.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("matricula"));
+            tcMotor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("motor"));
+            tcExtras.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("extras"));
+            //sin esto no podremos mostrar nada asi que es obligatorio
+            tvCoches.setItems(data);
+            //proximo paso insertar datos
+            //para ello debemos volver a conectar a la base de datos
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            data.removeAll();
+            tvCoches.getColumns().clear();
+            System.out.println(e.toString());
+            tvCoches.setItems(null);
+            System.out.println("Error on Building Data");
+
+        }
+        tvCoches.setItems(data);
+        System.out.println(data);
+        return false;
+    }
+
+    public boolean buscarPrecio(ActionEvent actionEvent) {
+        ObservableList<Concesionario> data = null;
+        try {
+            Connection conexionBBDD;
+
+            Concesionario auxiliar;
+            data = FXCollections.observableArrayList();
+            Connection c = null;
+            c = DriverManager.getConnection("jdbc:mariadb://localhost:5555/Concesionario?useSSL=false"
+                    , "root",
+                    "adminer");
+            ;
+            if (tfPrecioMax.getText() == ""){
+                tfPrecioMax.setText("10000000");
+            }
+            if (tfPrecioMin.getText() == "") {
+                tfPrecioMin.setText("0");
+            }
+            //hacemos la consulta con los datos que queremos sacar
+            String SQL = "SELECT * "
+                    + "FROM coches" +
+                    " where Cod_Coche like \"%"+tfCod_Coche.getText()+"%\"" +
+                    " and precio BETWEEN "+tfPrecioMin.getText()+" and "+tfPrecioMax.getText();
+            ResultSet datos = c.createStatement().executeQuery(SQL);
+            System.out.println(datos.toString());
+
+            //esto nos da unos datos pero tenemos que mostrarlo en la tabla
+            //de esta forma los mostramos en la tabla
+            while (datos.next()){
+                auxiliar = new Concesionario(
+                        datos.getString("Cod_Coche"),
+                        datos.getString("Marca"),
+                        datos.getString("Modelo"),
+                        datos.getString("año_fabricacion"),
+                        datos.getString("bastidor"),
+                        datos.getString("precio"),
+                        datos.getString("matricula"),
+                        datos.getString("motor"),
+                        datos.getString("extras"));
+
+
+                data.add(auxiliar);
+                //System.out.println(auxiliar.toString());
+            }
+            //esto es para poner los datos en la tabla para ello simplemnete le ponemos que en el id de cada columna de la tabla le aplique
+            //su dato es decir para oficina pues el codigo que tenemos en el array  y asi con cada dato
+            tcCod_Coche.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Cod_Coche"));
+            tcMarca.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("marca"));
+            tcModelo.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("modelo"));
+            tcAnio_Fabricacion.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("anio_fabricacion"));
+            tcBastidor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("bastidor"));
+            tcPrecio.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("precio"));
+            tcMatricula.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("matricula"));
+            tcMotor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("motor"));
+            tcExtras.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("extras"));
+            //sin esto no podremos mostrar nada asi que es obligatorio
+            tvCoches.setItems(data);
+            //proximo paso insertar datos
+            //para ello debemos volver a conectar a la base de datos
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            data.removeAll();
+            tvCoches.getColumns().clear();
+            System.out.println(e.toString());
+            tvCoches.setItems(null);
+            System.out.println("Error on Building Data");
+
+        }
+        tvCoches.setItems(data);
+        System.out.println(data);
+        return false;
+    }
 
     public boolean Insertar(ActionEvent actionEvent) {
         Concesionario auxiliar;

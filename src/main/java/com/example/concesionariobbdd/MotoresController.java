@@ -21,7 +21,7 @@ public class MotoresController {
     private Motores auxiliar;
 
     @FXML
-    private Button btnAnadir, btnAtras, btnAnnadirMotor, btnEditarMotores;
+    private Button btnAnadir, btnAtras, btnAnnadirMotor, btnEditarMotores, btnBuscarMotores;
     @FXML
     private Button btnBuscar;
     @FXML
@@ -41,8 +41,7 @@ public class MotoresController {
     @FXML
     private TableColumn tcCilindros;
     @FXML
-    private TextField tfCod_Motor, tfPotencia, tfCilindrada, tfCilindros;
-
+    private TextField tfCod_Motor, tfPotencia, tfCilindrada, tfCilindros, tfPotenciaMin, tfPotenciaMax;
 
 
     public void GoToAnnadir(ActionEvent event){
@@ -184,6 +183,28 @@ public class MotoresController {
 
     }
 
+    public void GoToBuscarMot(ActionEvent event){
+
+
+        FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("BuscarMot-view.fxml"));
+        Parent root = null;
+        try {
+            root = fxmlLoader2.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setTitle("Busqueda de motores");
+        stage.setScene(scene);
+        stage.show();
+
+        Stage stage8 = (Stage) this.btnBuscarMotores.getScene().getWindow();
+        stage8.close();
+
+    }
+
     public boolean Insertar(ActionEvent actionEvent) {
         Concesionario auxiliar;
         ObservableList<Object> data = FXCollections.observableArrayList();
@@ -251,6 +272,129 @@ public class MotoresController {
             System.out.println("Error:" + e.toString());
             return false;
         }
+    }
+
+    public boolean buscarCod_Motor(ActionEvent actionEvent) {
+        ObservableList<Motores> data = null;
+        try {
+            Connection conexionBBDD;
+
+            Motores auxiliar;
+            data = FXCollections.observableArrayList();
+            Connection c = null;
+            c = DriverManager.getConnection("jdbc:mariadb://localhost:5555/Concesionario?useSSL=false"
+                    , "root",
+                    "adminer");
+            ;
+            //hacemos la consulta con los datos que queremos sacar
+            String SQL = "SELECT * "
+                    + "FROM motor" +
+                    " where IdMotor like \"%"+tfCod_Motor.getText()+"%\"";
+            ResultSet datos = c.createStatement().executeQuery(SQL);
+            System.out.println(datos.toString());
+
+            //esto nos da unos datos pero tenemos que mostrarlo en la tabla
+            //de esta forma los mostramos en la tabla
+            while (datos.next()){
+                auxiliar = new Motores(
+                        datos.getString("IdMotor"),
+                        datos.getString("Potencia") + " Cv",
+                        datos.getString("Cilindrada") + " cc",
+                        datos.getString("Cilindros"));
+
+                data.add(auxiliar);
+                System.out.println(auxiliar.toString());
+            }
+            //esto es para poner los datos en la tabla para ello simplemnete le ponemos que en el id de cada columna de la tabla le aplique
+            //su dato es decir para oficina pues el codigo que tenemos en el array  y asi con cada dato
+            tcCod_Motor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Cod_Motor"));
+            tcPotencia.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Potencia"));
+            tcCilindrada.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Cilindrada"));
+            tcCilindros.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Cilindros"));
+            //sin esto no podremos mostrar nada asi que es obligatorio
+            tvMotores.setItems(data);
+            //proximo paso insertar datos
+            //para ello debemos volver a conectar a la base de datos
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            data.removeAll();
+            tvMotores.getColumns().clear();
+            System.out.println(e.toString());
+            tvMotores.setItems(null);
+            System.out.println("Error on Building Data");
+
+        }
+        tvMotores.setItems(data);
+        System.out.println(data);
+        return false;
+    }
+
+
+
+    public boolean buscarPrecioMot(ActionEvent actionEvent) {
+        ObservableList<Motores> data = null;
+        try {
+            Connection conexionBBDD;
+
+            Motores auxiliar;
+            data = FXCollections.observableArrayList();
+            Connection c = null;
+            c = DriverManager.getConnection("jdbc:mariadb://localhost:5555/Concesionario?useSSL=false"
+                    , "root",
+                    "adminer");
+            ;
+            if (tfPotenciaMax.getText() == ""){
+                tfPotenciaMax.setText("99999");
+            }
+            if (tfPotenciaMin.getText() == "") {
+                tfPotenciaMin.setText("0");
+            }
+            //hacemos la consulta con los datos que queremos sacar
+            String SQL = "SELECT * "
+                    + "FROM motor" +
+                    " where IdMotor like \"%"+tfCod_Motor.getText()+"%\"" +
+                    " and potencia BETWEEN "+tfPotenciaMin.getText()+" and "+tfPotenciaMax.getText();
+            ResultSet datos = c.createStatement().executeQuery(SQL);
+            System.out.println(datos.toString());
+
+            //esto nos da unos datos pero tenemos que mostrarlo en la tabla
+            //de esta forma los mostramos en la tabla
+            while (datos.next()){
+                auxiliar = new Motores(
+                        datos.getString("IdMotor"),
+                        datos.getString("Potencia") + " Cv",
+                        datos.getString("Cilindrada") + " cc",
+                        datos.getString("Cilindros"));
+
+                data.add(auxiliar);
+                System.out.println(auxiliar.toString());
+            }
+            //esto es para poner los datos en la tabla para ello simplemnete le ponemos que en el id de cada columna de la tabla le aplique
+            //su dato es decir para oficina pues el codigo que tenemos en el array  y asi con cada dato
+            tcCod_Motor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Cod_Motor"));
+            tcPotencia.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Potencia"));
+            tcCilindrada.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Cilindrada"));
+            tcCilindros.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Cilindros"));
+            //sin esto no podremos mostrar nada asi que es obligatorio
+            tvMotores.setItems(data);
+            //proximo paso insertar datos
+            //para ello debemos volver a conectar a la base de datos
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            data.removeAll();
+            tvMotores.getColumns().clear();
+            System.out.println(e.toString());
+            tvMotores.setItems(null);
+            System.out.println("Error on Building Data");
+
+        }
+        tvMotores.setItems(data);
+        System.out.println(data);
+        return false;
     }
 
     public Boolean actualizar(ActionEvent event) {
@@ -344,7 +488,6 @@ public class MotoresController {
 
     private void cargarGestorDobleCLick () {
         if(tvMotores == null){
-
         }else{
             tvMotores.setRowFactory(tv -> {
                 TableRow<Motores> row = new TableRow<>();
