@@ -55,7 +55,7 @@
                   <Font name="Verdana" size="29.0" />
                </font>
             </Label>
-            <Button fx:id="btnAtras" mnemonicParsing="false" onAction="#GoToInicio" style="-fx-background-color: #6291b3;" text="⬅">
+            <Button fx:id="btnAtras" mnemonicParsing="false" onAction="#GoToMotoresback" style="-fx-background-color: #6291b3;" text="⬅">
                <font>
                   <Font size="15.0" />
                </font>

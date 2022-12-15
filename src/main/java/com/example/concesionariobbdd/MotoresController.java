@@ -69,7 +69,7 @@ public class MotoresController {
     public void GoToInicio(ActionEvent event){
 
         try {
-            FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Motores-view.fxml"));
+            FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Inicio-view.fxml"));
             Parent root = null;
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
@@ -88,7 +88,7 @@ public class MotoresController {
     public void GoToEditar(ActionEvent event){
 
         try {
-            FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("EditarMot-view.fxml"));
+            FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Editar-view.fxml"));
             Parent root = null;
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
@@ -99,6 +99,25 @@ public class MotoresController {
 
             Stage stage4 = (Stage) this.btnEditar.getScene().getWindow();
             stage4.close();
+        }catch (IOException E){
+
+        }
+    }
+
+    public void GoToEditarMot(ActionEvent event){
+
+        try {
+            FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("EditarMot-view.fxml"));
+            Parent root = null;
+            root = fxmlLoader2.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("CONCESIONARIO");
+            stage.setScene(scene);
+            stage.show();
+
+            Stage stage10 = (Stage) this.btnEditar.getScene().getWindow();
+            stage10.close();
         }catch (IOException E){
 
         }
@@ -203,6 +222,25 @@ public class MotoresController {
         Stage stage8 = (Stage) this.btnBuscarMotores.getScene().getWindow();
         stage8.close();
 
+    }
+
+    public void GoToMotoresback(ActionEvent event){
+
+        try {
+            FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Motores-view.fxml"));
+            Parent root = null;
+            root = fxmlLoader2.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("CONCESIONARIO");
+            stage.setScene(scene);
+            stage.show();
+
+            Stage stage7 = (Stage) this.btnAtras.getScene().getWindow();
+            stage7.close();
+        }catch (IOException E){
+
+        }
     }
 
     public boolean Insertar(ActionEvent actionEvent) {
