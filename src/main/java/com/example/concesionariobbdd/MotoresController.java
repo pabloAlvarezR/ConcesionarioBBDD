@@ -12,10 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 
 public class MotoresController {
     private Motores auxiliar;
@@ -25,9 +22,9 @@ public class MotoresController {
     @FXML
     private TableView tvMotores;
     @FXML
-    private TableColumn tcCod_Motor,tcPotencia, tcCilindrada, tcCilindros;
+    private TableColumn tcCod_Motor,tcPotencia, tcCilindrada, tcPotencia2;
     @FXML
-    private TextField tfCod_Motor, tfPotencia, tfCilindrada, tfCilindros, tfPotenciaMin, tfPotenciaMax;
+    private TextField tfCod_Motor, tfPotencia, tfPotencia2, tfPotenciaMin, tfPotenciaMax, tfCilindrada;
 
 
     public void GoToAnnadir(ActionEvent event){
@@ -163,7 +160,6 @@ public class MotoresController {
         stage.show();
 
         Stage stage8 = (Stage) this.btnMotores.getScene().getWindow();
-        stage8.close();
 
     }
 
@@ -199,63 +195,59 @@ public class MotoresController {
             c = DriverManager.getConnection("jdbc:mariadb://localhost:5555/Concesionario?useSSL=false"
                     , "root",
                     "adminer");
-            String SQL = "INSERT INTO motor ("
+            String SQL = "INSERT INTO motores ("
                     + " IdMotor ,"
+                    + " Motor ,"
                     + " Potencia ,"
-                    + " Cilindrada ,"
-                    + " Cilindros )"
+                    + " Cilindrada )"
                     + " VALUES ( ?, ?, ?, ?)";
 
             PreparedStatement st = c.prepareStatement(SQL);
 
             st.setString(1, tfCod_Motor.getText());
             st.setString(2, tfPotencia.getText());
-            st.setString(3, tfCilindrada.getText());
-            st.setString(4, tfCilindros.getText());
+            st.setString(3, tfPotencia2.getText());
+            st.setString(4, tfCilindrada.getText());
 
-            registrosAfectadosConsulta = st.executeUpdate();
-
-
-            borrarTF();
-            Alert alert;
-            alert = new Alert(Alert.AlertType.INFORMATION, "Se ha añadido los datos a la tabla", ButtonType.OK);
-            alert.showAndWait();
-
-
-            // Ejecutamos la consulta preparada (con las ventajas de seguridad y velocidad en el servidor de BBDD
-            // nos devuelve el número de registros afectados. Al ser un Insert nos debe devolver 1 si se ha hecho correctamente
-
-            st.close();
-            c.close();
-
-            FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Motores-view.fxml"));
-            Parent root = null;
             try {
-                root = fxmlLoader2.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+                registrosAfectadosConsulta = st.executeUpdate();
+                borrarTF();
+                Alert alert;
+                alert = new Alert(Alert.AlertType.INFORMATION, "Se ha añadido los datos a la tabla", ButtonType.OK);
+                alert.showAndWait();
+
+
+                // Ejecutamos la consulta preparada (con las ventajas de seguridad y velocidad en el servidor de BBDD
+                // nos devuelve el número de registros afectados. Al ser un Insert nos debe devolver 1 si se ha hecho correctamente
+
+                st.close();
+                c.close();
+
+
+
+                Stage stage8 = (Stage) this.btnAnnadirMotor.getScene().getWindow();
+                stage8.close();
+
+
+
+
+            }catch (SQLIntegrityConstraintViolationException e){
+                Alert alert2;
+                alert2 = new Alert(Alert.AlertType.ERROR, "No se ha encontrado el coche a añadir el motor", ButtonType.OK);
+                alert2.showAndWait();
             }
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setTitle("Concesionario");
-            stage.setScene(scene);
-            stage.show();
-
-            Stage stage8 = (Stage) this.btnAnnadirMotor.getScene().getWindow();
-            stage8.close();
-
-            if (registrosAfectadosConsulta == 1) {
-                return true;
-            } else {
-                return false;
-            }
-
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Error:" + e.toString());
             return false;
         }
+        if (registrosAfectadosConsulta == 1) {
+            return true;
+        } else {
+            return false;
+        }
+
+
     }
 
     public boolean buscarCod_Motor(ActionEvent actionEvent) {
@@ -281,10 +273,10 @@ public class MotoresController {
             //de esta forma los mostramos en la tabla
             while (datos.next()){
                 auxiliar = new Motores(
-                        datos.getString("IdMotor"),
-                        datos.getString("Potencia") + " Cv",
-                        datos.getString("Cilindrada") + " cc",
-                        datos.getString("Cilindros"));
+                        datos.getString("Coche"),
+                        datos.getString("Motor"),
+                        datos.getString("Potencia"),
+                        datos.getString("Cilindrada"));
 
                 data.add(auxiliar);
                 System.out.println(auxiliar.toString());
@@ -293,8 +285,6 @@ public class MotoresController {
             //su dato es decir para oficina pues el codigo que tenemos en el array  y asi con cada dato
             tcCod_Motor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Cod_Motor"));
             tcPotencia.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Potencia"));
-            tcCilindrada.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Cilindrada"));
-            tcCilindros.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Cilindros"));
             //sin esto no podremos mostrar nada asi que es obligatorio
             tvMotores.setItems(data);
             //proximo paso insertar datos
@@ -347,10 +337,10 @@ public class MotoresController {
             //de esta forma los mostramos en la tabla
             while (datos.next()){
                 auxiliar = new Motores(
-                        datos.getString("IdMotor"),
-                        datos.getString("Potencia") + " Cv",
-                        datos.getString("Cilindrada") + " cc",
-                        datos.getString("Cilindros"));
+                        datos.getString("Coche"),
+                        datos.getString("Motor"),
+                        datos.getString("Potencia"),
+                        datos.getString("Cilindrada"));
 
                 data.add(auxiliar);
                 System.out.println(auxiliar.toString());
@@ -359,8 +349,9 @@ public class MotoresController {
             //su dato es decir para oficina pues el codigo que tenemos en el array  y asi con cada dato
             tcCod_Motor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Cod_Motor"));
             tcPotencia.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Potencia"));
-            tcCilindrada.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Cilindrada"));
-            tcCilindros.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Cilindros"));
+            tcPotencia2.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Potencia"));
+            tcCilindrada.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Potencia"));
+
             //sin esto no podremos mostrar nada asi que es obligatorio
             tvMotores.setItems(data);
             //proximo paso insertar datos
@@ -390,20 +381,16 @@ public class MotoresController {
             c = DriverManager.getConnection("jdbc:mariadb://localhost:5555/Concesionario?useSSL=false"
                     , "root",
                     "adminer");
-            String SQL = "UPDATE motor "
+            String SQL = "UPDATE motores "
                     + " SET "
-                    + " Potencia =? ,"
-                    + " Cilindrada =? ,"
-                    + " Cilindros =? "
-                    + " WHERE IdMotor = ? ";
+                    + " Motor =? ,"
+                    + " WHERE Coche = ? ";
 
             PreparedStatement st = c.prepareStatement(SQL);
 
             st.setString(1, tfPotencia.getText());
-            st.setString(2, tfCilindrada.getText());
-            st.setString(3, tfCilindros.getText());
 
-            st.setString(4, tfCod_Motor.getText());
+            st.setString(2, tfCod_Motor.getText());
 
             // Ejecutamos la consulta preparada (con las ventajas de seguridad y velocidad en el servidor de BBDD
             // nos devuelve el número de registros afectados. Al ser un Update nos debe devolver 1 si se ha hecho correctamente
@@ -477,15 +464,14 @@ public class MotoresController {
                 TableRow<Motores> row = new TableRow<>();
                 row.setOnMouseClicked(event -> {
                     if (event.getClickCount() == 2 && (!row.isEmpty())) {
-                        auxiliar.setCod_Motor(row.getItem().getCod_Motor());
+                        auxiliar.setIdMotor(row.getItem().getIdMotor());
+                        auxiliar.setMotor(row.getItem().getMotor());
                         auxiliar.setPotencia(row.getItem().getPotencia());
                         auxiliar.setCilindrada(row.getItem().getCilindrada());
-                        auxiliar.setCilindros(row.getItem().getCilindros());
 
-                        tfCod_Motor.setText(auxiliar.getCod_Motor());
-                        tfPotencia.setText(auxiliar.getPotencia());
-                        tfCilindrada.setText(auxiliar.getCilindrada());
-                        tfCilindros.setText(auxiliar.getCilindros());
+                        tfCod_Motor.setText(auxiliar.getIdMotor());
+                        tfPotencia.setText(auxiliar.getMotor());
+
 
                     }
                 });
@@ -507,7 +493,7 @@ public class MotoresController {
             c = DriverManager.getConnection("jdbc:mariadb://localhost:5555/Concesionario?useSSL=false"
                     , "root",
                     "adminer");
-            String SQL = "SELECT * "+"FROM motor";
+            String SQL = "SELECT * "+"FROM motores";
             ResultSet datos= c.createStatement().executeQuery(SQL);
             System.out.println(datos.toString());
 
@@ -515,18 +501,18 @@ public class MotoresController {
             while (datos.next()){
                 auxiliar = new Motores(
                         datos.getString("IdMotor"),
-                        datos.getString("Potencia") + " Cv",
-                        datos.getString("Cilindrada") + " cc",
-                        datos.getString("Cilindros"));
+                        datos.getString("Motor"),
+                        datos.getString("Potencia"),
+                        datos.getString("Cilindrada"));
 
                 data.add(auxiliar);
                 System.out.println(auxiliar.toString());
             }
 
-            tcCod_Motor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Cod_Motor"));
-            tcPotencia.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Potencia"));
+            tcCod_Motor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("IdMotor"));
+            tcPotencia.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Motor"));
+            tcPotencia2.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Potencia"));
             tcCilindrada.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Cilindrada"));
-            tcCilindros.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Cilindros"));
 
 
             tvMotores.setItems(data);
@@ -542,7 +528,7 @@ public class MotoresController {
     public void borrarTF(){
         tfCod_Motor.clear();
         tfPotencia.clear();
-        tfCilindros.clear();
+        tfPotencia.clear();
         tfCilindrada.clear();
     }
 

@@ -232,7 +232,6 @@ public class EliminarController {
                         datos.getString("bastidor"),
                         datos.getString("precio"),
                         datos.getString("matricula"),
-                        datos.getString("motor"),
                         datos.getString("extras"));
 
                 data.add(auxiliar);

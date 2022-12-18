@@ -43,8 +43,6 @@ public class EditarController {
     @FXML
     private TextField tfMatricula;
     @FXML
-    private TextField tfMotor;
-    @FXML
     private TextArea tfExtras;
     @FXML
     private TableView tvCoches;
@@ -63,8 +61,6 @@ public class EditarController {
     @FXML
     private TableColumn tcMatricula;
     @FXML
-    private TableColumn tcMotor;
-    @FXML
     private TableColumn tcExtras;
 
     private Text txtBindingSelecc;
@@ -77,7 +73,6 @@ public class EditarController {
         tfBastidor.clear();
         tfPrecio.clear();
         tfMatricula.clear();
-        tfMotor.clear();
         tfExtras.clear();
     }
 
@@ -230,7 +225,6 @@ public class EditarController {
                         datos.getString("bastidor"),
                         datos.getString("precio"),
                         datos.getString("matricula"),
-                        datos.getString("motor"),
                         datos.getString("extras"));
 
                 data.add(auxiliar);
@@ -244,7 +238,6 @@ public class EditarController {
             tcBastidor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("bastidor"));
             tcPrecio.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("precio"));
             tcMatricula.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("matricula"));
-            tcMotor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("motor"));
             tcExtras.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("extras"));
 
             tvCoches.setItems(data);
@@ -270,7 +263,6 @@ public class EditarController {
                     auxiliar.setBastidor(row.getItem().getBastidor());
                     auxiliar.setPrecio(row.getItem().getPrecio());
                     auxiliar.setMatricula(row.getItem().getMatricula());
-                    auxiliar.setMotor(row.getItem().getMotor());
                     auxiliar.setExtras(row.getItem().getExtras());
 
                     tfCod_Coche.setText(auxiliar.getCod_Coche());
@@ -280,7 +272,6 @@ public class EditarController {
                     tfBastidor.setText(auxiliar.getBastidor());
                     tfPrecio.setText(auxiliar.getPrecio());
                     tfMatricula.setText(auxiliar.getMatricula());
-                    tfMotor.setText(auxiliar.getMotor());
                     tfExtras.setText(auxiliar.getExtras());
                 }
             });
@@ -305,7 +296,6 @@ public class EditarController {
                     + " Bastidor =? ,"
                     + " Precio =? ,"
                     + " Matricula =? ,"
-                    + " Motor =?,"
                     + " Extras =? "
                     + " WHERE Cod_Coche = ? ";
 
@@ -317,7 +307,6 @@ public class EditarController {
             st.setString(4, tfBastidor.getText());
             st.setString(5, tfPrecio.getText());
             st.setString(6, tfMatricula.getText());
-            st.setString(7, tfMotor.getText());
             st.setString(8, tfExtras.getText());
 
             st.setString(9, tfCod_Coche.getText());

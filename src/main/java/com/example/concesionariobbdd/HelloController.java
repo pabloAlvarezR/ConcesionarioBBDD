@@ -43,8 +43,6 @@ public class HelloController {
     @FXML
     private TextField tfMatricula;
     @FXML
-    private TextField tfMotor;
-    @FXML
     private TextArea tfExtras;
     @FXML
     private TableView tvCoches;
@@ -63,18 +61,16 @@ public class HelloController {
     @FXML
     private TableColumn tcMatricula;
     @FXML
-    private TableColumn tcMotor;
-    @FXML
     private TableColumn tcExtras;
 
     public void borrarTF(){
+        tfCod_Coche.clear();
         tfMarca.clear();
         tfModelo.clear();
         tfAnio_Fabricacion.clear();
         tfBastidor.clear();
         tfPrecio.clear();
         tfMatricula.clear();
-        tfMotor.clear();
         tfExtras.clear();
     }
 
@@ -195,7 +191,6 @@ public class HelloController {
             stage.show();
 
             Stage stage7 = (Stage) this.btnMotores.getScene().getWindow();
-            stage7.close();
         }catch (IOException E){
 
         }
@@ -227,7 +222,6 @@ public class HelloController {
                         datos.getString("bastidor"),
                         datos.getString("precio"),
                         datos.getString("matricula"),
-                        datos.getString("motor"),
                         datos.getString("extras"));
 
                 data.add(auxiliar);
@@ -241,7 +235,6 @@ public class HelloController {
             tcBastidor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("bastidor"));
             tcPrecio.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("precio"));
             tcMatricula.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("matricula"));
-            tcMotor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("motor"));
             tcExtras.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("extras"));
 
             tvCoches.setItems(data);
@@ -305,7 +298,6 @@ public class HelloController {
                             datos.getString("bastidor"),
                             datos.getString("precio"),
                             datos.getString("matricula"),
-                            datos.getString("motor"),
                             datos.getString("extras"));
 
 
@@ -321,7 +313,6 @@ public class HelloController {
             tcBastidor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("bastidor"));
             tcPrecio.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("precio"));
             tcMatricula.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("matricula"));
-            tcMotor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("motor"));
             tcExtras.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("extras"));
             //sin esto no podremos mostrar nada asi que es obligatorio
             tvCoches.setItems(data);
@@ -380,7 +371,6 @@ public class HelloController {
                         datos.getString("bastidor"),
                         datos.getString("precio"),
                         datos.getString("matricula"),
-                        datos.getString("motor"),
                         datos.getString("extras"));
 
 
@@ -396,7 +386,6 @@ public class HelloController {
             tcBastidor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("bastidor"));
             tcPrecio.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("precio"));
             tcMatricula.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("matricula"));
-            tcMotor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("motor"));
             tcExtras.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("extras"));
             //sin esto no podremos mostrar nada asi que es obligatorio
             tvCoches.setItems(data);
@@ -429,25 +418,25 @@ public class HelloController {
                     , "root",
                     "adminer");
             String SQL = "INSERT INTO Coches ("
+                    + " Cod_coche ,"
                     + " Marca ,"
                     + " Modelo ,"
                     + " Año_Fabricacion ,"
                     + " Bastidor ,"
                     + " Precio ,"
                     + " Matricula ,"
-                    + " Motor ,"
                     + " Extras )"
                     + " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement st = c.prepareStatement(SQL);
 
-            st.setString(1, tfMarca.getText());
-            st.setString(2, tfModelo.getText());
-            st.setString(3, tfAnio_Fabricacion.getText());
-            st.setString(4, tfBastidor.getText());
-            st.setString(5, tfPrecio.getText());
-            st.setString(6, tfMatricula.getText());
-            st.setString(7, tfMotor.getText());
+            st.setString(1, tfCod_Coche.getText());
+            st.setString(2, tfMarca.getText());
+            st.setString(3, tfModelo.getText());
+            st.setString(4, tfAnio_Fabricacion.getText());
+            st.setString(5, tfBastidor.getText());
+            st.setString(6, tfPrecio.getText());
+            st.setString(7, tfMatricula.getText());
             st.setString(8, tfExtras.getText());
 
             registrosAfectadosConsulta = st.executeUpdate();
