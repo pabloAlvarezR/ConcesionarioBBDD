@@ -77,7 +77,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="BOTTOM_LEFT" contentDisplay="BOTTOM" text="Codigo Motor" textAlignment="RIGHT" textFill="WHITE">
+            <Label alignment="BOTTOM_LEFT" contentDisplay="BOTTOM" text="Codigo Coche" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font name="Verdana" size="20.0" />
                </font>
@@ -101,7 +101,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label contentDisplay="BOTTOM" text="Potencia (Cv)" textAlignment="RIGHT" textFill="WHITE">
+            <Label contentDisplay="BOTTOM" text="Motor" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font name="Verdana" size="20.0" />
                </font>
@@ -124,21 +124,17 @@
          <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
+         <VBox.margin>
+            <Insets left="140.0" right="100.0" top="30.0" />
+         </VBox.margin>
          <children>
-            <Label contentDisplay="BOTTOM" text="Cilindrada (cc)" textAlignment="RIGHT" textFill="WHITE">
+            <Label contentDisplay="BOTTOM" text="Potencia (cv)" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font name="Verdana" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="tfCilindrada" GridPane.columnIndex="1">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-            </TextField>
+            <TextField fx:id="tfPotencia2" prefHeight="25.0" prefWidth="285.0" GridPane.columnIndex="1" />
          </children>
-         <VBox.margin>
-            <Insets left="140.0" right="100.0" top="30.0" />
-         </VBox.margin>
       </GridPane>
       <GridPane alignment="CENTER" prefHeight="46.0">
          <columnConstraints>
@@ -148,21 +144,17 @@
          <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
+         <VBox.margin>
+            <Insets left="140.0" right="100.0" top="30.0" />
+         </VBox.margin>
          <children>
-            <Label contentDisplay="BOTTOM" text="Cilindros" textAlignment="RIGHT" textFill="WHITE">
+            <Label contentDisplay="BOTTOM" text="Cilindrada (cc)" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font name="Verdana" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="tfCilindros" GridPane.columnIndex="1">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-            </TextField>
+            <TextField fx:id="tfCilindrada" prefHeight="25.0" prefWidth="285.0" GridPane.columnIndex="1" />
          </children>
-         <VBox.margin>
-            <Insets left="140.0" right="100.0" top="30.0" />
-         </VBox.margin>
       </GridPane>
       <Button fx:id="btnAnnadirMotor" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="3.0" mnemonicParsing="false" onAction="#Insertar" style="-fx-background-color: #6fc920;" text="➕Añadir➕">
          <font>

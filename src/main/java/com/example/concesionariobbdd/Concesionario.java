@@ -8,7 +8,6 @@ public class Concesionario {
     String bastidor;
     String precio;
     String matricula;
-    String motor;
     String extras;
 
 
@@ -21,7 +20,6 @@ public class Concesionario {
                 ", bastidor='" + bastidor + '\'' +
                 ", precio='" + precio + '\'' +
                 ", matricula='" + matricula + '\'' +
-                ", motor='" + motor + '\'' +
                 ", extras='" + extras + '\'' +
                 '}';
     }
@@ -52,10 +50,6 @@ public class Concesionario {
 
     public void setMatricula(String matricula) {
         this.matricula = matricula;
-    }
-
-    public void setMotor(String motor) {
-        this.motor = motor;
     }
 
     public void setExtras(String extras) {
@@ -91,16 +85,12 @@ public class Concesionario {
         return matricula;
     }
 
-    public String getMotor() {
-        return motor;
-    }
-
     public String getExtras() {
         return extras;
     }
 
 
-    public Concesionario(String Cod_Coche, String marca, String modelo, String anio_fabricacion, String bastidor, String precio, String matricula, String motor, String extras) {
+    public Concesionario(String Cod_Coche, String marca, String modelo, String anio_fabricacion, String bastidor, String precio, String matricula, String extras) {
         this.Cod_Coche = Cod_Coche;
         this.marca = marca;
         this.modelo = modelo;
@@ -108,7 +98,6 @@ public class Concesionario {
         this.bastidor = bastidor;
         this.precio = precio;
         this.matricula = matricula;
-        this.motor = motor;
         this.extras = extras;
     }
 }

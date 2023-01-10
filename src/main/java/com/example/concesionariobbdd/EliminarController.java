@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -69,6 +70,15 @@ public class EliminarController {
     @FXML
     private TableColumn tcExtras;
 
+    private Text txtBindingSelecc;
+
+    @FXML
+    public void initialize(){
+        cargarGestorDobleCLick();
+        mostrarDatos();
+
+    }
+
     public void borrarTF(){
         tfCod_Coche.clear();
     }
@@ -86,7 +96,8 @@ public class EliminarController {
 
         Scene scene = new Scene(root);
         Stage stage = new Stage();
-        stage.setTitle("CONCESIONARIO");
+        stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
 
@@ -103,7 +114,8 @@ public class EliminarController {
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("CONCESIONARIO");
+            stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
 
@@ -122,13 +134,13 @@ public class EliminarController {
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("CONCESIONARIO");
+            stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
 
             Stage stage4 = (Stage) this.btnEditar.getScene().getWindow();
             stage4.close();
-            cargarGestorDobleCLick();
         }catch (IOException E){
 
         }
@@ -142,7 +154,8 @@ public class EliminarController {
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("CONCESIONARIO");
+            stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
 
@@ -161,7 +174,8 @@ public class EliminarController {
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("CONCESIONARIO");
+            stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
 
@@ -180,7 +194,8 @@ public class EliminarController {
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("CONCESIONARIO");
+            stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
 
@@ -203,12 +218,12 @@ public class EliminarController {
             c = DriverManager.getConnection("jdbc:mariadb://localhost:5555/Concesionario?useSSL=false"
                     , "root",
                     "adminer");
-            String SQL = "SELECT * "+"FROM coches";
-            ResultSet datos= c.createStatement().executeQuery(SQL);
+            String SQL = "SELECT * " + "FROM coches";
+            ResultSet datos = c.createStatement().executeQuery(SQL);
             System.out.println(datos.toString());
 
 
-            while (datos.next()){
+            while (datos.next()) {
                 auxiliar = new Concesionario(
                         datos.getString("Cod_Coche"),
                         datos.getString("Marca"),
@@ -217,7 +232,6 @@ public class EliminarController {
                         datos.getString("bastidor"),
                         datos.getString("precio"),
                         datos.getString("matricula"),
-                        datos.getString("motor"),
                         datos.getString("extras"));
 
                 data.add(auxiliar);
@@ -244,28 +258,6 @@ public class EliminarController {
             System.out.println("Error on Building Data");
         }
     }
-
-    /*private void cargarGestorDobleCLick () {
-        tvCoches.setRowFactory(tv -> {
-            TableRow<Concesionario> row = new TableRow<>();
-            row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && (!row.isEmpty())) {
-                    auxiliar.setCod_Coche(row.getItem().getCod_Coche());
-                    auxiliar.setmarca(row.getItem().getMarca());
-                    auxiliar.setModelo(row.getItem().getModelo());
-                    auxiliar.setAnio_fabricacion(row.getItem().getAnio_fabricacion());
-                    auxiliar.setBastidor(row.getItem().getBastidor());
-                    auxiliar.setPrecio(row.getItem().getPrecio());
-                    auxiliar.setMatricula(row.getItem().getMatricula());
-                    auxiliar.setMotor(row.getItem().getMotor());
-                    auxiliar.setExtras(row.getItem().getExtras());
-
-
-                }
-            });
-            return row;
-        });
-    }*/
 
     public void borrar(ActionEvent event) {
         Connection c;
@@ -319,75 +311,5 @@ public class EliminarController {
             });
             return row;
         });
-    }
-
-    public Boolean actualizar(ActionEvent event) {
-        Connection c;
-        int registrosAfectadosConsulta = 0;
-
-        try {
-            // Nos conectamos
-            c = DriverManager.getConnection("jdbc:mariadb://localhost:5555/Concesionario?useSSL=false"
-                    , "root",
-                    "adminer");
-            String SQL = "UPDATE coches "
-                    + " SET "
-                    + " Marca =? ,"
-                    + " Modelo =? ,"
-                    + " Año_Fabricacion =? ,"
-                    + " Bastidor =? ,"
-                    + " Precio =? ,"
-                    + " Matricula =? ,"
-                    + " Motor =?,"
-                    + " Extras =? "
-                    + " WHERE Cod_Coche = ? ";
-
-            PreparedStatement st = c.prepareStatement(SQL);
-
-            st.setString(1, tfMarca.getText());
-            st.setString(2, tfModelo.getText());
-            st.setString(3, tfAnio_Fabricacion.getText());
-            st.setString(4, tfBastidor.getText());
-            st.setString(5, tfPrecio.getText());
-            st.setString(6, tfMatricula.getText());
-            st.setString(7, tfMotor.getText());
-            st.setString(8, tfExtras.getText());
-
-            st.setString(9, tfCod_Coche.getText());
-
-            // Ejecutamos la consulta preparada (con las ventajas de seguridad y velocidad en el servidor de BBDD
-            // nos devuelve el número de registros afectados. Al ser un Update nos debe devolver 1 si se ha hecho correctamente
-            st.executeUpdate();
-            if(tfCod_Coche.getText() == ""){
-                Alert alert;
-                alert = new Alert(Alert.AlertType.WARNING, "No se ha modificado ningun dato", ButtonType.OK);
-                alert.showAndWait();
-            }else {
-                Alert alert;
-                alert = new Alert(Alert.AlertType.INFORMATION, "Se han modificado los datos de la tabla", ButtonType.OK);
-                alert.showAndWait();
-            }
-            mostrarDatos();
-            borrarTF();
-            st.close();
-            c.close();
-
-            if (registrosAfectadosConsulta == 1) {
-                return true;
-            } else {
-                return false;
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Error:" + e.toString());
-            return false;
-        }
-    }
-
-    @FXML
-    public void initialize(){
-        cargarGestorDobleCLick();
-        mostrarDatos();
     }
 }

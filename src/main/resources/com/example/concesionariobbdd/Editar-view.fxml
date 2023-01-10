@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="1033.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.concesionariobbdd.EditarController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="1033.0" style="-fx-background-color: #000000;" stylesheets="@../../../style/st.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.concesionariobbdd.EditarController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="445.0" minWidth="10.0" prefWidth="232.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="767.0" minWidth="10.0" prefWidth="767.0" />
@@ -230,5 +230,21 @@
             <Insets left="170.0" top="20.0" />
          </GridPane.margin>
       </Button>
+      <Label text="Coche seleccionado:" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Verdana" size="14.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="60.0" />
+         </GridPane.margin>
+      </Label>
+      <Text fx:id="txtBindingSelecc" fill="#c7b832" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Verdana" size="15.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="10.0" />
+         </GridPane.margin>
+      </Text>
    </children>
 </GridPane>

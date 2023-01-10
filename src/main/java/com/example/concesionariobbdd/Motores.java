@@ -1,42 +1,44 @@
 package com.example.concesionariobbdd;
 
 public class Motores {
-    String Cod_Motor;
+    String IdMotor;
+    String Motor;
     String Potencia;
     String Cilindrada;
-    String Cilindros;
 
 
     @Override
     public String toString() {
         return "Motores{" +
-                "cod_Motor='" + Cod_Motor + '\'' +
-                ", Potencia='" + Potencia + '\'' +
-                ", Cilindrada='" + Cilindrada + '\'' +
-                ", Cilindros='" + Cilindros + '\'' +
+                "IdMotor='" + IdMotor + '\''+
+                ", Motor ='" + Motor + '\'' +
+                ", Potencia ='" + Potencia +" Cv"+ '\'' +
+                ", Cilindrada ='" + Cilindrada +" cc"+ '\'' +
                 '}';
     }
 
-    public void setCod_Motor(String cod_Motor) {
-        this.Cod_Motor = cod_Motor;
+    public void setIdMotor(String idMotor) {
+        this.IdMotor = idMotor;
     }
 
+    public void setMotor(String Motor) {
+        this.Motor = Motor;
+    }
     public void setPotencia(String Potencia) {
         this.Potencia = Potencia;
     }
-
     public void setCilindrada(String Cilindrada) {
         this.Cilindrada = Cilindrada;
     }
 
-    public void setCilindros(String Cilindros) {
-        this.Cilindros = Cilindros;
-    }
 
 
-    public String getCod_Motor() {
-        return Cod_Motor;
+
+    public String getIdMotor() {
+        return IdMotor;
     }
+
+    public String getMotor() {return Motor;}
 
     public String getPotencia() {
         return Potencia;
@@ -46,15 +48,15 @@ public class Motores {
         return Cilindrada;
     }
 
-    public String getCilindros() {
-        return Cilindros;
-    }
 
-    public Motores(String Cod_Motores, String Potencia, String Cilindrada, String Cilindros) {
-        this.Cod_Motor = Cod_Motores;
+
+    public Motores(String IdMotor, String Motor, String Potencia, String Cilindrada) {
+        this.IdMotor = IdMotor;
+        this.Motor = Motor;
         this.Potencia = Potencia;
-        this.Cilindros = Cilindros;
         this.Cilindrada = Cilindrada;
+
+
 
     }
 }

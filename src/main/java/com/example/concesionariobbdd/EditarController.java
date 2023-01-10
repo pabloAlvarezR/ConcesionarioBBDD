@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -42,8 +43,6 @@ public class EditarController {
     @FXML
     private TextField tfMatricula;
     @FXML
-    private TextField tfMotor;
-    @FXML
     private TextArea tfExtras;
     @FXML
     private TableView tvCoches;
@@ -62,9 +61,9 @@ public class EditarController {
     @FXML
     private TableColumn tcMatricula;
     @FXML
-    private TableColumn tcMotor;
-    @FXML
     private TableColumn tcExtras;
+
+    private Text txtBindingSelecc;
 
     public void borrarTF(){
         tfCod_Coche.clear();
@@ -74,7 +73,6 @@ public class EditarController {
         tfBastidor.clear();
         tfPrecio.clear();
         tfMatricula.clear();
-        tfMotor.clear();
         tfExtras.clear();
     }
 
@@ -91,7 +89,8 @@ public class EditarController {
 
         Scene scene = new Scene(root);
         Stage stage = new Stage();
-        stage.setTitle("CONCESIONARIO");
+        stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
 
@@ -108,7 +107,8 @@ public class EditarController {
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("CONCESIONARIO");
+            stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
 
@@ -127,13 +127,13 @@ public class EditarController {
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("CONCESIONARIO");
+            stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
 
             Stage stage4 = (Stage) this.btnEditar.getScene().getWindow();
             stage4.close();
-            cargarGestorDobleCLick();
         }catch (IOException E){
 
         }
@@ -147,7 +147,8 @@ public class EditarController {
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("CONCESIONARIO");
+            stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
 
@@ -166,7 +167,8 @@ public class EditarController {
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("CONCESIONARIO");
+            stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
 
@@ -185,7 +187,8 @@ public class EditarController {
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("CONCESIONARIO");
+            stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
 
@@ -222,7 +225,6 @@ public class EditarController {
                         datos.getString("bastidor"),
                         datos.getString("precio"),
                         datos.getString("matricula"),
-                        datos.getString("motor"),
                         datos.getString("extras"));
 
                 data.add(auxiliar);
@@ -236,7 +238,6 @@ public class EditarController {
             tcBastidor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("bastidor"));
             tcPrecio.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("precio"));
             tcMatricula.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("matricula"));
-            tcMotor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("motor"));
             tcExtras.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("extras"));
 
             tvCoches.setItems(data);
@@ -247,67 +248,6 @@ public class EditarController {
 
 
             System.out.println("Error on Building Data");
-        }
-    }
-
-    /*private void cargarGestorDobleCLick () {
-        tvCoches.setRowFactory(tv -> {
-            TableRow<Concesionario> row = new TableRow<>();
-            row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && (!row.isEmpty())) {
-                    auxiliar.setCod_Coche(row.getItem().getCod_Coche());
-                    auxiliar.setmarca(row.getItem().getMarca());
-                    auxiliar.setModelo(row.getItem().getModelo());
-                    auxiliar.setAnio_fabricacion(row.getItem().getAnio_fabricacion());
-                    auxiliar.setBastidor(row.getItem().getBastidor());
-                    auxiliar.setPrecio(row.getItem().getPrecio());
-                    auxiliar.setMatricula(row.getItem().getMatricula());
-                    auxiliar.setMotor(row.getItem().getMotor());
-                    auxiliar.setExtras(row.getItem().getExtras());
-
-
-                }
-            });
-            return row;
-        });
-    }*/
-
-    public void borrar(ActionEvent event) {
-        Connection c;
-        int registrosAfectadosConsulta = 0;
-        Alert alert;
-        alert = new Alert(Alert.AlertType.CONFIRMATION, "¿Estas seguro de que quieres borrar?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
-        alert.showAndWait();
-        if (alert.getResult() == ButtonType.YES) {
-            try {
-                // Nos conectamos
-                c = DriverManager.getConnection("jdbc:mariadb://localhost:5555/Concesionario?useSSL=false"
-                        , "root",
-                        "adminer");
-                String SQL = "DELETE FROM Coches "
-                        + " WHERE Cod_Coche = ? ";
-
-                PreparedStatement st = c.prepareStatement(SQL);
-
-                st.setString(1, tfCod_Coche.getText());
-
-                // Ejecutamos la consulta preparada (con las ventajas de seguridad y velocidad en el servidor de BBDD
-                // nos devuelve el número de registros afectados. Al ser un Delete nos debe devolver 1 si se ha hecho correctamente
-                registrosAfectadosConsulta = st.executeUpdate();
-
-                mostrarDatos();
-                borrarTF();
-                st.close();
-                c.close();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("Error:" + e.toString());
-
-            }
-        }
-        {
-
         }
     }
 
@@ -323,7 +263,6 @@ public class EditarController {
                     auxiliar.setBastidor(row.getItem().getBastidor());
                     auxiliar.setPrecio(row.getItem().getPrecio());
                     auxiliar.setMatricula(row.getItem().getMatricula());
-                    auxiliar.setMotor(row.getItem().getMotor());
                     auxiliar.setExtras(row.getItem().getExtras());
 
                     tfCod_Coche.setText(auxiliar.getCod_Coche());
@@ -333,7 +272,6 @@ public class EditarController {
                     tfBastidor.setText(auxiliar.getBastidor());
                     tfPrecio.setText(auxiliar.getPrecio());
                     tfMatricula.setText(auxiliar.getMatricula());
-                    tfMotor.setText(auxiliar.getMotor());
                     tfExtras.setText(auxiliar.getExtras());
                 }
             });
@@ -358,7 +296,6 @@ public class EditarController {
                     + " Bastidor =? ,"
                     + " Precio =? ,"
                     + " Matricula =? ,"
-                    + " Motor =?,"
                     + " Extras =? "
                     + " WHERE Cod_Coche = ? ";
 
@@ -370,7 +307,6 @@ public class EditarController {
             st.setString(4, tfBastidor.getText());
             st.setString(5, tfPrecio.getText());
             st.setString(6, tfMatricula.getText());
-            st.setString(7, tfMotor.getText());
             st.setString(8, tfExtras.getText());
 
             st.setString(9, tfCod_Coche.getText());

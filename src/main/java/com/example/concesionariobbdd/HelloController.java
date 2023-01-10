@@ -3,6 +3,7 @@ package com.example.concesionariobbdd;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -42,8 +43,6 @@ public class HelloController {
     @FXML
     private TextField tfMatricula;
     @FXML
-    private TextField tfMotor;
-    @FXML
     private TextArea tfExtras;
     @FXML
     private TableView tvCoches;
@@ -62,40 +61,39 @@ public class HelloController {
     @FXML
     private TableColumn tcMatricula;
     @FXML
-    private TableColumn tcMotor;
-    @FXML
     private TableColumn tcExtras;
 
     public void borrarTF(){
+        tfCod_Coche.clear();
         tfMarca.clear();
         tfModelo.clear();
         tfAnio_Fabricacion.clear();
         tfBastidor.clear();
         tfPrecio.clear();
         tfMatricula.clear();
-        tfMotor.clear();
         tfExtras.clear();
     }
 
     public void GoToAnnadir(ActionEvent event){
 
 
-            FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Annadir-view.fxml"));
-            Parent root = null;
+        FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Annadir-view.fxml"));
+        Parent root = null;
         try {
             root = fxmlLoader2.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setTitle("CONCESIONARIO");
-            stage.setScene(scene);
-            stage.show();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
 
-            Stage stage2 = (Stage) this.btnAnadir.getScene().getWindow();
-            stage2.close();
+        Stage stage2 = (Stage) this.btnAnadir.getScene().getWindow();
+        stage2.close();
 
     }
 
@@ -107,7 +105,8 @@ public class HelloController {
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("CONCESIONARIO");
+            stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
 
@@ -126,13 +125,13 @@ public class HelloController {
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("CONCESIONARIO");
+            stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
 
             Stage stage4 = (Stage) this.btnEditar.getScene().getWindow();
             stage4.close();
-
         }catch (IOException E){
 
         }
@@ -146,7 +145,8 @@ public class HelloController {
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("CONCESIONARIO");
+            stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
 
@@ -165,7 +165,8 @@ public class HelloController {
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("CONCESIONARIO");
+            stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
 
@@ -184,12 +185,12 @@ public class HelloController {
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("CONCESIONARIO");
+            stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
 
             Stage stage7 = (Stage) this.btnMotores.getScene().getWindow();
-            stage7.close();
         }catch (IOException E){
 
         }
@@ -221,7 +222,6 @@ public class HelloController {
                         datos.getString("bastidor"),
                         datos.getString("precio"),
                         datos.getString("matricula"),
-                        datos.getString("motor"),
                         datos.getString("extras"));
 
                 data.add(auxiliar);
@@ -235,7 +235,6 @@ public class HelloController {
             tcBastidor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("bastidor"));
             tcPrecio.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("precio"));
             tcMatricula.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("matricula"));
-            tcMotor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("motor"));
             tcExtras.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("extras"));
 
             tvCoches.setItems(data);
@@ -299,7 +298,6 @@ public class HelloController {
                             datos.getString("bastidor"),
                             datos.getString("precio"),
                             datos.getString("matricula"),
-                            datos.getString("motor"),
                             datos.getString("extras"));
 
 
@@ -315,7 +313,6 @@ public class HelloController {
             tcBastidor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("bastidor"));
             tcPrecio.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("precio"));
             tcMatricula.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("matricula"));
-            tcMotor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("motor"));
             tcExtras.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("extras"));
             //sin esto no podremos mostrar nada asi que es obligatorio
             tvCoches.setItems(data);
@@ -374,7 +371,6 @@ public class HelloController {
                         datos.getString("bastidor"),
                         datos.getString("precio"),
                         datos.getString("matricula"),
-                        datos.getString("motor"),
                         datos.getString("extras"));
 
 
@@ -390,7 +386,6 @@ public class HelloController {
             tcBastidor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("bastidor"));
             tcPrecio.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("precio"));
             tcMatricula.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("matricula"));
-            tcMotor.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("motor"));
             tcExtras.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("extras"));
             //sin esto no podremos mostrar nada asi que es obligatorio
             tvCoches.setItems(data);
@@ -423,25 +418,25 @@ public class HelloController {
                     , "root",
                     "adminer");
             String SQL = "INSERT INTO Coches ("
+                    + " Cod_coche ,"
                     + " Marca ,"
                     + " Modelo ,"
                     + " Año_Fabricacion ,"
                     + " Bastidor ,"
                     + " Precio ,"
                     + " Matricula ,"
-                    + " Motor ,"
                     + " Extras )"
                     + " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement st = c.prepareStatement(SQL);
 
-            st.setString(1, tfMarca.getText());
-            st.setString(2, tfModelo.getText());
-            st.setString(3, tfAnio_Fabricacion.getText());
-            st.setString(4, tfBastidor.getText());
-            st.setString(5, tfPrecio.getText());
-            st.setString(6, tfMatricula.getText());
-            st.setString(7, tfMotor.getText());
+            st.setString(1, tfCod_Coche.getText());
+            st.setString(2, tfMarca.getText());
+            st.setString(3, tfModelo.getText());
+            st.setString(4, tfAnio_Fabricacion.getText());
+            st.setString(5, tfBastidor.getText());
+            st.setString(6, tfPrecio.getText());
+            st.setString(7, tfMatricula.getText());
             st.setString(8, tfExtras.getText());
 
             registrosAfectadosConsulta = st.executeUpdate();
@@ -468,6 +463,18 @@ public class HelloController {
             e.printStackTrace();
             System.out.println("Error:" + e.toString());
             return false;
+        }
+    }
+
+
+
+    public void Coche(Event event) {
+        TiempoEjecucion coche = new TiempoEjecucion();
+        Stage stage = new Stage();
+        try {
+            coche.start(stage);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
