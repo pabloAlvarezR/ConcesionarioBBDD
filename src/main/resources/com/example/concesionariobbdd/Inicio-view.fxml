@@ -73,7 +73,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button fx:id="btnAnadir" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#GoToAnnadir" prefWidth="230.0" style="-fx-background-color: #6291b3;" text="     Añadir" GridPane.rowIndex="1">
+            <Button id="btnAnnadir" fx:id="btnAnadir" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#GoToAnnadir" prefWidth="230.0" style="-fx-background-color: #6291b3;" text="     Añadir" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>

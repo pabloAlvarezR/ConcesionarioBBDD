@@ -87,7 +87,7 @@ public class HelloController {
 
         Scene scene = new Scene(root);
         Stage stage = new Stage();
-        stage.setTitle("CONCESIONARIO FRANCISCO GONZÁLEZ S. L.");
+        stage.setTitle("Añadir nuevo coche");
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();

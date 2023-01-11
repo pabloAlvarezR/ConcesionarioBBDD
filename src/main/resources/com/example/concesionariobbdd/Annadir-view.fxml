@@ -103,37 +103,37 @@
             <Font name="Verdana" size="17.0" />
          </font>
       </Text>
-      <TextField fx:id="tfMarca" prefHeight="28.0" prefWidth="753.0" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <TextField id="tfMarca" fx:id="tfMarca" prefHeight="28.0" prefWidth="753.0" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="180.0" right="130.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="tfModelo" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <TextField id="tfModelo" fx:id="tfModelo" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets left="180.0" right="130.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="tfAnio_Fabricacion" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <TextField id="tfAnnio" fx:id="tfAnio_Fabricacion" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets left="180.0" right="130.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="tfBastidor" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+      <TextField id="tfBastidor" fx:id="tfBastidor" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <GridPane.margin>
             <Insets left="180.0" right="130.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="tfPrecio" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="6">
+      <TextField id="tfPrecio" fx:id="tfPrecio" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <GridPane.margin>
             <Insets left="180.0" right="130.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="tfMatricula" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="7">
+      <TextField id="tfMatricula" fx:id="tfMatricula" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="7">
          <GridPane.margin>
             <Insets left="180.0" right="130.0" />
          </GridPane.margin>
       </TextField>
-      <TextArea fx:id="tfExtras" prefHeight="76.0" prefWidth="453.0" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="8" GridPane.rowSpan="2">
+      <TextArea id="tfExtras" fx:id="tfExtras" prefHeight="76.0" prefWidth="453.0" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="8" GridPane.rowSpan="2">
          <GridPane.margin>
             <Insets bottom="80.0" left="180.0" right="130.0" top="20.0" />
          </GridPane.margin>
@@ -191,7 +191,7 @@
             </Button>
          </children>
       </GridPane>
-      <Button mnemonicParsing="false" onAction="#Insertar" style="-fx-background-color: #6fc920;" text="Añadir" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER">
+      <Button id="btnAnnadirCoche" mnemonicParsing="false" onAction="#Insertar" style="-fx-background-color: #6fc920;" text="Añadir" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
@@ -207,7 +207,7 @@
             <Insets left="20.0" />
          </GridPane.margin>
       </Text>
-      <TextField fx:id="tfCod_Coche" prefHeight="28.0" prefWidth="753.0" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <TextField id="tfCod_Coche" fx:id="tfCod_Coche" prefHeight="28.0" prefWidth="753.0" style="-fx-background-color: #d4d4d4;" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="180.0" right="130.0" />
          </GridPane.margin>
