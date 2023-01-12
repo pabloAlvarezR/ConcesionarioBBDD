@@ -86,12 +86,12 @@
                   <Font name="Verdana Bold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="btnEditar" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#GoToEditar" prefWidth="230.0" style="-fx-background-color: #6291b3;" text="     Editar" GridPane.rowIndex="2">
+            <Button id="btnGoToEditar" fx:id="btnEditar" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#GoToEditar" prefWidth="230.0" style="-fx-background-color: #6291b3;" text="     Editar" GridPane.rowIndex="2">
                <font>
                   <Font name="Verdana Bold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="btnEliminar" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#GoToEliminar" prefWidth="230.0" style="-fx-background-color: #6291b3;" text="     Eliminar" GridPane.rowIndex="3">
+            <Button id="btnGoToEliminar" fx:id="btnEliminar" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#GoToEliminar" prefWidth="230.0" style="-fx-background-color: #6291b3;" text="     Eliminar" GridPane.rowIndex="3">
                <font>
                   <Font name="Verdana Bold" size="17.0" />
                </font>

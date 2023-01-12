@@ -3,8 +3,12 @@ package com.example.concesionariobbdd;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
+import javafx.geometry.Point2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
@@ -21,6 +25,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(ApplicationExtension.class)
 class HelloControllerTest {
+    TableView tvEliminar;
     Pane mainroot;
     Stage mainstage;
 
@@ -59,7 +64,11 @@ class HelloControllerTest {
         robot.sleep(1000);
         robot.clickOn("#btnAnnadirCoche");
         robot.sleep(1000);
+        robot.clickOn("Aceptar");
+        robot.clickOn("#btnAtras");
     }
+
+
 
 
 }

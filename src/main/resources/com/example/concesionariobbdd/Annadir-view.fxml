@@ -138,7 +138,7 @@
             <Insets bottom="80.0" left="180.0" right="130.0" top="20.0" />
          </GridPane.margin>
       </TextArea>
-      <Button fx:id="btnAtras" mnemonicParsing="false" onAction="#GoToInicio" style="-fx-background-color: #6291b3;" text="⬅" GridPane.rowIndex="1">
+      <Button id="btnAtras" fx:id="btnAtras" mnemonicParsing="false" onAction="#GoToInicio" style="-fx-background-color: #6291b3;" text="⬅" GridPane.rowIndex="1">
          <font>
             <Font size="15.0" />
          </font>

@@ -501,7 +501,7 @@ public class MotoresController {
             tvMotores.setRowFactory(tv -> {
                 TableRow<Motores> row = new TableRow<>();
                 row.setOnMouseClicked(event -> {
-                    if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                    if (event.getClickCount() == 1 && (!row.isEmpty())) {
                         auxiliar.setIdMotor(row.getItem().getIdMotor());
                         auxiliar.setMotor(row.getItem().getMotor());
                         auxiliar.setPotencia(row.getItem().getPotencia());

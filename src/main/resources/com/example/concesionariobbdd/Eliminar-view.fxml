@@ -58,9 +58,9 @@
             <Insets left="230.0" />
          </GridPane.margin>
       </Button>
-      <TableView fx:id="tvCoches" editable="true" fixedCellSize="0.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #303030;" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="8">
+      <TableView id="tvEliminar" fx:id="tvCoches" editable="true" fixedCellSize="0.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #303030;" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="8">
          <columns>
-            <TableColumn fx:id="tcCod_Coche" prefWidth="71.0" text="Cod_Coche" />
+            <TableColumn id="tcCod_Coche" fx:id="tcCod_Coche" prefWidth="71.0" text="Cod_Coche" />
             <TableColumn fx:id="tcMarca" prefWidth="79.0" text="Marca" />
             <TableColumn fx:id="tcModelo" prefWidth="75.0" text="Modelo" />
             <TableColumn fx:id="tcAnio_Fabricacion" prefWidth="97.0" text="Año Fabricacion" />
@@ -74,7 +74,7 @@
             <Insets left="10.0" right="20.0" />
          </GridPane.margin>
       </TableView>
-      <Button mnemonicParsing="false" onAction="#borrar" style="-fx-background-color: #e84343;" text="Eliminar" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER">
+      <Button id="btnEliminar" mnemonicParsing="false" onAction="#borrar" style="-fx-background-color: #e84343;" text="Eliminar" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER">
          <font>
             <Font name="Verdana" size="16.0" />
          </font>

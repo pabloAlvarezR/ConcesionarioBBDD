@@ -255,7 +255,7 @@ public class EditarController {
         tvCoches.setRowFactory(tv -> {
             TableRow<Concesionario> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                if (event.getClickCount() == 1 && (!row.isEmpty())) {
                     auxiliar.setCod_Coche(row.getItem().getCod_Coche());
                     auxiliar.setmarca(row.getItem().getMarca());
                     auxiliar.setModelo(row.getItem().getModelo());
