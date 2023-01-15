@@ -1,16 +1,11 @@
 package com.example.concesionariobbdd;
 
-import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Bounds;
-import javafx.geometry.Point2D;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxAssert;
@@ -21,10 +16,8 @@ import org.testfx.matcher.base.WindowMatchers;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @ExtendWith(ApplicationExtension.class)
-class HelloControllerTest {
+class IntegrationTest {
     TableView tvEliminar;
     Pane mainroot;
     Stage mainstage;
@@ -66,6 +59,20 @@ class HelloControllerTest {
         robot.sleep(1000);
         robot.clickOn("Aceptar");
         robot.clickOn("#btnAtras");
+
+        TableView tableView = robot.lookup("#tvDatosInicio").queryAs(TableView.class);
+        robot.clickOn("TestWheels");
+        Concesionario Coche = (Concesionario) tableView.getSelectionModel().getSelectedItem();
+
+        Assertions.assertEquals("50" ,Coche.getCod_Coche());
+        Assertions.assertEquals("TestWheels" ,Coche.getMarca());
+        Assertions.assertEquals("Test" ,Coche.getModelo());
+        Assertions.assertEquals("2050" ,Coche.getAnio_fabricacion());
+        Assertions.assertEquals("TEST12345" ,Coche.getBastidor());
+        Assertions.assertEquals("500000" ,Coche.getPrecio());
+        Assertions.assertEquals("0000 XXX" ,Coche.getMatricula());
+        Assertions.assertEquals("Esto es una prueba de extras" ,Coche.getExtras());
+
     }
 
 

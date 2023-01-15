@@ -38,7 +38,7 @@
             <Insets bottom="60.0" left="120.0" />
          </GridPane.margin>
       </Label>
-      <TableView fx:id="tvCoches" editable="true" fixedCellSize="0.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #303030;" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="8">
+      <TableView id="tvDatosInicio" fx:id="tvCoches" editable="true" fixedCellSize="0.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #303030;" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="8">
         <columns>
           <TableColumn fx:id="tcCod_Coche" prefWidth="86.0" text="Cod Coche" />
           <TableColumn fx:id="tcMarca" prefWidth="82.0" text="Marca" />

@@ -47,7 +47,7 @@
             <Insets left="20.0" top="30.0" />
          </GridPane.margin>
       </ImageView>
-      <Button fx:id="btnAtras" mnemonicParsing="false" onAction="#GoToInicio" style="-fx-background-color: #6291b3;" text="⬅" GridPane.rowIndex="1">
+      <Button id="btnAtras" fx:id="btnAtras" mnemonicParsing="false" onAction="#GoToInicio" style="-fx-background-color: #6291b3;" text="⬅" GridPane.rowIndex="1">
          <font>
             <Font size="15.0" />
          </font>

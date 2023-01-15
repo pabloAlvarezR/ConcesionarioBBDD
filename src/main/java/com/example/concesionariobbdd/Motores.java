@@ -6,8 +6,6 @@ public class Motores {
     String Potencia;
     String Cilindrada;
 
-
-    @Override
     public String toString() {
         return "Motores{" +
                 "IdMotor='" + IdMotor + '\''+
@@ -55,8 +53,5 @@ public class Motores {
         this.Motor = Motor;
         this.Potencia = Potencia;
         this.Cilindrada = Cilindrada;
-
-
-
     }
 }

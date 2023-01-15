@@ -412,58 +412,69 @@ public class HelloController {
         ObservableList<Object> data = FXCollections.observableArrayList();
         int registrosAfectadosConsulta = 0;
         Connection c;
-        try {
-            // Nos conectamos
-            c = DriverManager.getConnection("jdbc:mariadb://localhost:5555/Concesionario?useSSL=false"
-                    , "root",
-                    "adminer");
-            String SQL = "INSERT INTO Coches ("
-                    + " Cod_coche ,"
-                    + " Marca ,"
-                    + " Modelo ,"
-                    + " Año_Fabricacion ,"
-                    + " Bastidor ,"
-                    + " Precio ,"
-                    + " Matricula ,"
-                    + " Extras )"
-                    + " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
 
-            PreparedStatement st = c.prepareStatement(SQL);
+        if (tfPrecio.getText().isBlank()) {
+            Alert alert2;
+            alert2 = new Alert(Alert.AlertType.ERROR, "El coche debe tener un precio", ButtonType.OK);
+            alert2.showAndWait();
+        }else{
+            try {
+                // Nos conectamos
+                c = DriverManager.getConnection("jdbc:mariadb://localhost:5555/Concesionario?useSSL=false"
+                        , "root",
+                        "adminer");
+                String SQL = "INSERT INTO Coches ("
+                        + " Cod_coche ,"
+                        + " Marca ,"
+                        + " Modelo ,"
+                        + " Año_Fabricacion ,"
+                        + " Bastidor ,"
+                        + " Precio ,"
+                        + " Matricula ,"
+                        + " Extras )"
+                        + " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
 
-            st.setString(1, tfCod_Coche.getText());
-            st.setString(2, tfMarca.getText());
-            st.setString(3, tfModelo.getText());
-            st.setString(4, tfAnio_Fabricacion.getText());
-            st.setString(5, tfBastidor.getText());
-            st.setString(6, tfPrecio.getText());
-            st.setString(7, tfMatricula.getText());
-            st.setString(8, tfExtras.getText());
-
-            registrosAfectadosConsulta = st.executeUpdate();
+                PreparedStatement st = c.prepareStatement(SQL);
 
 
-            borrarTF();
-            Alert alert;
-            alert = new Alert(Alert.AlertType.INFORMATION, "Se ha añadido los datos a la tabla", ButtonType.OK);
-            alert.showAndWait();
 
-            // Ejecutamos la consulta preparada (con las ventajas de seguridad y velocidad en el servidor de BBDD
-            // nos devuelve el número de registros afectados. Al ser un Insert nos debe devolver 1 si se ha hecho correctamente
+                st.setString(1, tfCod_Coche.getText());
+                st.setString(2, tfMarca.getText());
+                st.setString(3, tfModelo.getText());
+                st.setString(4, tfAnio_Fabricacion.getText());
+                st.setString(5, tfBastidor.getText());
+                st.setString(6, tfPrecio.getText());
+                st.setString(7, tfMatricula.getText());
+                st.setString(8, tfExtras.getText());
 
-            st.close();
-            c.close();
 
-            if (registrosAfectadosConsulta == 1) {
-                return true;
-            } else {
-                return false;
+
+                registrosAfectadosConsulta = st.executeUpdate();
+
+
+                borrarTF();
+                Alert alert;
+                alert = new Alert(Alert.AlertType.INFORMATION, "Se ha añadido los datos a la tabla", ButtonType.OK);
+                alert.showAndWait();
+
+                // Ejecutamos la consulta preparada (con las ventajas de seguridad y velocidad en el servidor de BBDD
+                // nos devuelve el número de registros afectados. Al ser un Insert nos debe devolver 1 si se ha hecho correctamente
+
+                st.close();
+                c.close();
+
+                if (registrosAfectadosConsulta == 1) {
+                    return true;
+                } else {
+                    return false;
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("Error:" + e.toString());
             }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Error:" + e.toString());
-            return false;
         }
+        return false;
     }
 
 
