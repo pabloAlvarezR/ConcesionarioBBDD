@@ -18,7 +18,6 @@ import java.io.IOException;
 
 @ExtendWith(ApplicationExtension.class)
 class IntegrationTest {
-    TableView tvEliminar;
     Pane mainroot;
     Stage mainstage;
 

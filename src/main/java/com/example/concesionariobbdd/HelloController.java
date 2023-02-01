@@ -377,8 +377,7 @@ public class HelloController {
                 data.add(auxiliar);
                 //System.out.println(auxiliar.toString());
             }
-            //esto es para poner los datos en la tabla para ello simplemnete le ponemos que en el id de cada columna de la tabla le aplique
-            //su dato es decir para oficina pues el codigo que tenemos en el array  y asi con cada dato
+
             tcCod_Coche.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Cod_Coche"));
             tcMarca.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("marca"));
             tcModelo.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("modelo"));
@@ -389,8 +388,7 @@ public class HelloController {
             tcExtras.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("extras"));
             //sin esto no podremos mostrar nada asi que es obligatorio
             tvCoches.setItems(data);
-            //proximo paso insertar datos
-            //para ello debemos volver a conectar a la base de datos
+
 
 
         } catch (Exception e) {

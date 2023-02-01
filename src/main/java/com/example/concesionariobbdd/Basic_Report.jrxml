@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Coffee_Landscape_5" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="df013db5-f76e-44d3-b0df-bcbc46d93160">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[YENvbmNlc2lvbmFyaW9gLmNvY2hlcyBBUyAsMTcsMjYsNDJhOTAyMTItMWRhZS00NDliLWFhOTgt
+YzZiZDNmNmIwMWE3O2BDb25jZXNpb25hcmlvYC5tb3RvcmVzIEFTICwyNTIsNDEsOWY0ZDRhYzgt
+MjcwZS00NDM1LTliNmQtOTFjNGMxYzMxNjkwOw==]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Concesionario Adapter"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT `Concesionario`.motores.`IdMotor`,
+	`Concesionario`.motores.`Motor`,
+	`Concesionario`.motores.`Potencia`,
+	`Concesionario`.coches.`Marca`,
+	`Concesionario`.coches.`Cod_coche`,
+	`Concesionario`.coches.`Modelo`,
+	`Concesionario`.coches.`Precio`
+FROM `Concesionario`.motores
+	INNER JOIN `Concesionario`.coches ON 
+	 `Concesionario`.motores.`IdMotor` = `Concesionario`.coches.`Cod_coche`]]>
+	</queryString>
+	<field name="IdMotor" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="IdMotor"/>
+		<property name="com.jaspersoft.studio.field.label" value="IdMotor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="motores"/>
+	</field>
+	<field name="Motor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Motor"/>
+		<property name="com.jaspersoft.studio.field.label" value="Motor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="motores"/>
+	</field>
+	<field name="Potencia" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Potencia"/>
+		<property name="com.jaspersoft.studio.field.label" value="Potencia"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="motores"/>
+	</field>
+	<field name="Marca" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Marca"/>
+		<property name="com.jaspersoft.studio.field.label" value="Marca"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="coches"/>
+	</field>
+	<field name="Cod_coche" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Cod_coche"/>
+		<property name="com.jaspersoft.studio.field.label" value="Cod_coche"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="coches"/>
+	</field>
+	<field name="Modelo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Modelo"/>
+		<property name="com.jaspersoft.studio.field.label" value="Modelo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="coches"/>
+	</field>
+	<field name="Precio" class="java.lang.Float">
+		<property name="com.jaspersoft.studio.field.name" value="Precio"/>
+		<property name="com.jaspersoft.studio.field.label" value="Precio"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="coches"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<image>
+				<reportElement x="10" y="0" width="114" height="126" uuid="1c003177-754c-448f-8ce1-16868856f545"/>
+				<imageExpression><![CDATA["C:/Users/Pablo A/Pictures/peugeot-logo-4-1.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="170" y="30" width="528" height="62" uuid="bc1ce1da-8232-46ea-be55-cec4abb986dd"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Lista de Coches en venta]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="e9d2002a-c8ee-4649-a258-640dad29110c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="114" height="15" forecolor="#736343" uuid="13ca6d99-700f-462b-875b-cad2c2e60c4a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3788c41a-0bca-4877-a37c-218ea3405c61"/>
+				</reportElement>
+				<text><![CDATA[IdMotor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="114" y="0" width="114" height="15" forecolor="#736343" uuid="f33ddec6-861f-4db6-8487-0615e938901c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6792efbd-3fcf-40f0-9c81-49eff5a9e1c1"/>
+				</reportElement>
+				<text><![CDATA[Motor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="228" y="0" width="114" height="15" forecolor="#736343" uuid="92c4db00-48f0-4dab-9495-cce8258b278c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="eeaee855-f114-4351-b024-f6ac83367312"/>
+				</reportElement>
+				<text><![CDATA[Potencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="342" y="0" width="114" height="15" forecolor="#736343" uuid="108ec253-4351-4003-9b3d-ade1aae51f0c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="93e30eb2-5dea-4519-8a09-18e2b595fc0d"/>
+				</reportElement>
+				<text><![CDATA[Marca]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="456" y="0" width="114" height="15" forecolor="#736343" uuid="e588a965-3927-4e45-8a82-8224134f737c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="124a84ce-7fec-487b-adb2-ddf351b5e6dd"/>
+				</reportElement>
+				<text><![CDATA[Cod_coche]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="570" y="0" width="114" height="15" forecolor="#736343" uuid="4846f8dc-c7a2-4740-b3e2-c257776592ff">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3a8307e2-739e-4944-a98a-7c866449fa01"/>
+				</reportElement>
+				<text><![CDATA[Modelo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="684" y="0" width="114" height="15" forecolor="#736343" uuid="1d8fc1f9-2f7b-4f89-afbc-db0b38c5c2a6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b888d5c5-54c3-4e83-bd31-89d7f21c3fce"/>
+				</reportElement>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="fa7cec56-4ec1-48e6-a26e-7266a995d174"/>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" x="0" y="0" width="114" height="15" uuid="c5d7d06d-19dc-4104-b1ac-35fd4192ef16">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3788c41a-0bca-4877-a37c-218ea3405c61"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{IdMotor}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" x="114" y="0" width="114" height="15" uuid="4b083128-3816-4ba9-bf34-687543082b6f">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6792efbd-3fcf-40f0-9c81-49eff5a9e1c1"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{Motor}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" x="228" y="0" width="114" height="15" uuid="e9688a84-16ee-4a31-a398-bc3fee119dc7">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="eeaee855-f114-4351-b024-f6ac83367312"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{Potencia}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" x="342" y="0" width="114" height="15" uuid="76f42df4-5469-4e9c-bf6d-b96163f66a70">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="93e30eb2-5dea-4519-8a09-18e2b595fc0d"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{Marca}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" x="456" y="0" width="114" height="15" uuid="bb0bf094-b02f-421d-89d2-b9cfe12bcd8d">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="124a84ce-7fec-487b-adb2-ddf351b5e6dd"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{Cod_coche}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" x="570" y="0" width="114" height="15" uuid="a7cf8154-8b1b-4961-9e41-a2ec59df5f6f">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3a8307e2-739e-4944-a98a-7c866449fa01"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{Modelo}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" x="684" y="0" width="114" height="15" uuid="3e2d9d16-4993-4d29-a9a0-9990e8ef9ff3">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b888d5c5-54c3-4e83-bd31-89d7f21c3fce"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{Precio}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="fa5e88d5-a011-4e32-8f12-ce923f903111"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="5d8169bd-4a75-48c8-8a68-6d3ad5ba9402"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="e5e27efa-b599-499b-9ca3-848cb511cb7b"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="18cfe1ca-f7d6-48b0-9827-28578b42a5e0"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="fbce24bb-3cb1-44a3-8eec-8c067ddbe5b5"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
