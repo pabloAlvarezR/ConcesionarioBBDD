@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="REPORTE YA" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="28e3d2e4-602f-4e6a-b376-130f4040e9cd">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[YENvbmNlc2lvbmFyaW9gLm1vdG9yZXMgQVMgLDI4NiwxMzgsNzVkZWY1Y2ItZGVkMS00NzU1LWEx
+MWQtODUyYzA1MWMyMzYzO2BDb25jZXNpb25hcmlvYC5jb2NoZXMgQVMgLDc1LDc3LDQwZTIxNmYy
+LWU3ZTUtNDU5ZC05MmI3LTFlZWRkYzNkNDY3Zjs=]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Concesionario Adapter"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT `Concesionario`.coches.`Cod_coche`,
+	`Concesionario`.coches.`Marca`,
+	`Concesionario`.coches.`Modelo`,
+	`Concesionario`.coches.`Año_Fabricacion`,
+	`Concesionario`.coches.`Precio`
+FROM `Concesionario`.motores
+	INNER JOIN `Concesionario`.coches ON 
+	 `Concesionario`.motores.`IdMotor` = `Concesionario`.coches.`Cod_coche`]]>
+	</queryString>
+	<field name="Cod_coche" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Cod_coche"/>
+		<property name="com.jaspersoft.studio.field.label" value="Cod_coche"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="coches"/>
+	</field>
+	<field name="Marca" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Marca"/>
+		<property name="com.jaspersoft.studio.field.label" value="Marca"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="coches"/>
+	</field>
+	<field name="Modelo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Modelo"/>
+		<property name="com.jaspersoft.studio.field.label" value="Modelo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="coches"/>
+	</field>
+	<field name="Año_Fabricacion" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Año_Fabricacion"/>
+		<property name="com.jaspersoft.studio.field.label" value="Año_Fabricacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="coches"/>
+	</field>
+	<field name="Precio" class="java.lang.Float">
+		<property name="com.jaspersoft.studio.field.name" value="Precio"/>
+		<property name="com.jaspersoft.studio.field.label" value="Precio"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="coches"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="171" splitType="Stretch">
+			<staticText>
+				<reportElement x="-10" y="140" width="100" height="30" uuid="f65e97f1-ce82-4a94-a0d2-c9100efc282a"/>
+				<text><![CDATA[Cod_coche]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="140" width="100" height="30" uuid="57b0947d-8ba1-4ccf-a713-d45cc8d35b2a"/>
+				<text><![CDATA[Marca]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="140" width="100" height="30" uuid="c2f034b7-8bca-4774-87d7-00b207c6d7db"/>
+				<text><![CDATA[Modelo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="340" y="140" width="100" height="30" uuid="881f6dc1-8ba2-43e1-86bf-18d168e84874"/>
+				<text><![CDATA[Año_Fabricacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="470" y="140" width="100" height="30" uuid="e2b040ac-6317-4239-9984-616b2151bbd3"/>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<image>
+				<reportElement x="10" y="10" width="112" height="120" uuid="7e60cfa3-b5c3-44f8-b6a0-fd1706cdefe7"/>
+				<imageExpression><![CDATA["C:/Users/Pablo A/IdeaProjects/ConcesionarioBBDD/src/main/resources/images/peugeot-logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="150" y="30" width="630" height="90" uuid="eb0b3cd4-f180-4b7b-863e-523d760a5602"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="35"/>
+				</textElement>
+				<text><![CDATA[Concesionario Francisco González S. L.]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="61" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="0" width="842" height="61" forecolor="#6A62B5" backcolor="#1442B8" uuid="b3f41b7d-555e-4d78-8471-591587d4eeb7">
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 == 0]]></printWhenExpression>
+				</reportElement>
+			</frame>
+			<textField>
+				<reportElement x="-10" y="10" width="100" height="30" forecolor="#FFFFFF" uuid="c1f9d3ba-4c22-4f39-abc7-5a1096a3e1f9"/>
+				<textFieldExpression><![CDATA[$F{Cod_coche}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="10" width="100" height="30" forecolor="#FFFFFF" uuid="1cadc812-3b8d-4a99-8db2-f11cd9dd7e6a"/>
+				<textFieldExpression><![CDATA[$F{Marca}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="210" y="8" width="100" height="30" forecolor="#FFFFFF" uuid="240b1ae3-120c-4e3a-a1a5-7381fc38fa33"/>
+				<textFieldExpression><![CDATA[$F{Modelo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="10" width="100" height="30" forecolor="#FFFFFF" uuid="fe491235-0661-4cc3-b070-72f3d5cf088e"/>
+				<textFieldExpression><![CDATA[$F{Año_Fabricacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="470" y="9" width="100" height="30" forecolor="#FFFFFF" uuid="123f80fc-3852-4f18-ad97-a6e6851c30ef"/>
+				<textFieldExpression><![CDATA[$F{Precio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>
