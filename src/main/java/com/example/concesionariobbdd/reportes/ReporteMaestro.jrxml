@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteMaestro" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ced95029-b569-4027-895c-af2843a4e088">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[YENvbmNlc2lvbmFyaW9gLmNvY2hlcyBBUyAsNTgsODQsNDA2YTBmMGYtNmY4OC00YjFlLWJkZWQt
+NWVkM2U1ZTAzOTIwOw==]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT `Cod_coche`,
+	`Marca`,
+	`Modelo`
+FROM `Concesionario`.coches]]>
+	</queryString>
+	<field name="Cod_coche" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Cod_coche"/>
+		<property name="com.jaspersoft.studio.field.label" value="Cod_coche"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="coches"/>
+	</field>
+	<field name="Marca" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Marca"/>
+		<property name="com.jaspersoft.studio.field.label" value="Marca"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="coches"/>
+	</field>
+	<field name="Modelo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Modelo"/>
+		<property name="com.jaspersoft.studio.field.label" value="Modelo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="coches"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="123" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="100" y="10" width="454" height="62" uuid="1a652692-054a-40f3-ade5-68d8da36626d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[Concesionario Francisco González S. L.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" mode="Opaque" x="217" y="85" width="220" height="24" forecolor="#030303" backcolor="#FFFFFF" uuid="88d4231e-f014-4b0d-b871-1737ba63a1ae"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Lista de coches y sus motores]]></text>
+			</staticText>
+			<image>
+				<reportElement x="1" y="0" width="79" height="85" uuid="b27c9cf6-5120-429c-8cef-4eed7f5d39f5"/>
+				<imageExpression><![CDATA["src/main/resources/images/peugeot-logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="185" height="15" forecolor="#030303" uuid="f2648437-7345-484a-afbb-e54ee322c135">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6a68e24f-0943-4c11-bbf8-445bd1dedeb2"/>
+				</reportElement>
+				<text><![CDATA[Cod_coche]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="185" y="0" width="185" height="15" forecolor="#030303" uuid="693a6286-fa45-4df3-af1b-f47f60ad436b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6138d6fe-ba63-43e3-bffd-a6cafeb9310d"/>
+				</reportElement>
+				<text><![CDATA[Marca]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="370" y="0" width="185" height="15" forecolor="#030303" uuid="e653556b-6d59-4c3a-a86c-252e236e6f28">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0e9c5a82-aa80-491b-8315-d7f37ddfbd3e"/>
+				</reportElement>
+				<text><![CDATA[Modelo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="122" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="5" width="555" height="15" backcolor="#969696" uuid="a98495d8-3c8d-4fa0-81f5-30c3efc2f766"/>
+				<frame>
+					<reportElement mode="Opaque" x="0" y="0" width="554" height="14" backcolor="#B0B0B0" uuid="18383ddd-fac9-4b6f-b141-649b8280bfb5">
+						<printWhenExpression><![CDATA[$F{Cod_coche}% 2 == 1]]></printWhenExpression>
+					</reportElement>
+				</frame>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" x="0" y="0" width="185" height="15" uuid="848f6231-ca15-420e-b15c-26911024cc84">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6a68e24f-0943-4c11-bbf8-445bd1dedeb2"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{Cod_coche}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" x="185" y="0" width="185" height="15" uuid="44780ebc-5a81-4a35-bc3d-676be41d4bf8">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6138d6fe-ba63-43e3-bffd-a6cafeb9310d"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{Marca}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" x="370" y="0" width="185" height="15" uuid="2e490b26-134d-43cd-bcd4-9076dc4fe337">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0e9c5a82-aa80-491b-8315-d7f37ddfbd3e"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{Modelo}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<subreport>
+				<reportElement x="0" y="20" width="555" height="29" uuid="13e111c0-af56-4568-8960-67ed66fdb048"/>
+				<subreportParameter name="Parameter1">
+					<subreportParameterExpression><![CDATA[$F{Cod_coche}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{Subreport}]]></subreportExpression>
+			</subreport>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="-3" y="50" width="555" height="3" forecolor="#030303" backcolor="#030303" uuid="1a61a836-d137-48b1-ad67-6ff64600bf93">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#90D0D1" backcolor="#E1F2F1" uuid="183682bc-d976-4756-83e0-6625a3f98ed1"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="533" y="0" width="40" height="20" forecolor="#030303" uuid="0193f9b3-1559-491a-8580-b6988863b6a1"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="453" y="0" width="80" height="20" forecolor="#030303" uuid="d00b105e-494b-418b-8ac9-8b1b4824f4f0"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#030303" uuid="0616f3fe-0354-456f-8911-ec30ec51a5ae"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

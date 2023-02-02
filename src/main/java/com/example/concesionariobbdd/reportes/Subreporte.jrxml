@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Subreporte" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1764f595-f643-492b-8bc4-312f80a7d7b7">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<parameter name="Parameter1" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[$F{IdMotor}]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT `IdMotor`,
+	`Motor`,
+	`Potencia`,
+	`Cilindrada`
+FROM `Concesionario`.motores
+WHERE IdMotor =  $P{Parameter1} ]]>
+	</queryString>
+	<field name="IdMotor" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="IdMotor"/>
+		<property name="com.jaspersoft.studio.field.label" value="IdMotor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="motores"/>
+	</field>
+	<field name="Motor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Motor"/>
+		<property name="com.jaspersoft.studio.field.label" value="Motor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="motores"/>
+	</field>
+	<field name="Potencia" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Potencia"/>
+		<property name="com.jaspersoft.studio.field.label" value="Potencia"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="motores"/>
+	</field>
+	<field name="Cilindrada" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Cilindrada"/>
+		<property name="com.jaspersoft.studio.field.label" value="Cilindrada"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="motores"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="22">
+			<staticText>
+				<reportElement x="10" y="0" width="100" height="20" uuid="2509eaff-e230-4f43-8a18-322edd0be7da">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8e47f335-cd6a-4dbe-8ad4-cc55b1655ede"/>
+				</reportElement>
+				<text><![CDATA[IdMotor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="20" uuid="4db3c7aa-30bb-43f2-9e38-5ca6beccf362">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ea21227-f14a-4aa4-9ff5-60950510dba6"/>
+				</reportElement>
+				<text><![CDATA[Motor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="0" width="100" height="20" uuid="0ad615c4-e88c-4973-84d6-77d0330c9736">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c3052fbc-7960-41e5-b210-e2958e975aab"/>
+				</reportElement>
+				<text><![CDATA[Potencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="0" width="100" height="20" uuid="7cdbf4cd-cb8f-437a-9334-35aa13e9e1ff">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a4069fa6-4b7f-4f0f-8ce2-7fe8debe37b9"/>
+				</reportElement>
+				<text><![CDATA[Cilindrada]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="10" y="0" width="100" height="20" uuid="50f65cd3-7cf5-4c48-87e0-3121e9bafa8f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8e47f335-cd6a-4dbe-8ad4-cc55b1655ede"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{IdMotor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="20" uuid="4a69ae34-8a84-4e76-942e-fb145fe47489">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ea21227-f14a-4aa4-9ff5-60950510dba6"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{Motor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="0" width="100" height="20" uuid="662b2758-8247-438e-bf80-a7ee50ae1b7d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c3052fbc-7960-41e5-b210-e2958e975aab"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{Potencia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="0" width="100" height="20" uuid="0e42e245-ff95-4c5a-bd7f-a1ad074b3186">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a4069fa6-4b7f-4f0f-8ce2-7fe8debe37b9"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{Cilindrada}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

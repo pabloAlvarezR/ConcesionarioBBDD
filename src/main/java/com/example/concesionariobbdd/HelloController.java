@@ -19,7 +19,7 @@ public class HelloController {
     private Concesionario auxiliar;
 
     @FXML
-    private Button btnAnadir, btnAtras;
+    private Button btnAnadir, btnAtras, btnReporte;
     @FXML
     private Button btnBuscar;
     @FXML
@@ -196,6 +196,25 @@ public class HelloController {
         }
     }
 
+    public void GoToReportes(ActionEvent event){
+
+        try {
+            FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Reports-view.fxml"));
+            Parent root = null;
+            root = fxmlLoader2.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("Selector de reportes");
+            stage.setResizable(false);
+            stage.setScene(scene);
+            stage.show();
+
+            Stage stage7 = (Stage) this.btnReporte.getScene().getWindow();
+        }catch (IOException E){
+            System.out.println("No ha habierto reportes, error");
+        }
+    }
+
     public void mostrarDatos() {
        /* Dynamic TableView Data From Database
           BY Narayan G. Maharjan https://blog.ngopal.com.np/2011/10/19/dyanmic-tableview-data-from-database/comment-page-1/
@@ -247,28 +266,6 @@ public class HelloController {
             System.out.println("Error on Building Data");
         }
     }
-
-    /*private void cargarGestorDobleCLick () {
-        tvCoches.setRowFactory(tv -> {
-            TableRow<Concesionario> row = new TableRow<>();
-            row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && (!row.isEmpty())) {
-                    auxiliar.setCod_Coche(row.getItem().getCod_Coche());
-                    auxiliar.setmarca(row.getItem().getMarca());
-                    auxiliar.setModelo(row.getItem().getModelo());
-                    auxiliar.setAnio_fabricacion(row.getItem().getAnio_fabricacion());
-                    auxiliar.setBastidor(row.getItem().getBastidor());
-                    auxiliar.setPrecio(row.getItem().getPrecio());
-                    auxiliar.setMatricula(row.getItem().getMatricula());
-                    auxiliar.setMotor(row.getItem().getMotor());
-                    auxiliar.setExtras(row.getItem().getExtras());
-
-
-                }
-            });
-            return row;
-        });
-    }*/
 
     public boolean buscarCod_Coche(ActionEvent actionEvent) {
         ObservableList<Concesionario> data = null;
@@ -375,7 +372,6 @@ public class HelloController {
 
 
                 data.add(auxiliar);
-                //System.out.println(auxiliar.toString());
             }
 
             tcCod_Coche.setCellValueFactory(new PropertyValueFactory<Concesionario, String>("Cod_Coche"));

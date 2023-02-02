@@ -27,7 +27,7 @@ public class ReportCoches extends JFrame {
     public void showReportSimple() throws JRException, ClassNotFoundException, SQLException {
 
         String servidor = "jdbc:mariadb://localhost:5555/Concesionario?useSSL=false";
-        String usuario = "adminer";
+        String usuario = "root";
         String passwd = "adminer";
 
         Connection conexionBBDD;
@@ -35,7 +35,7 @@ public class ReportCoches extends JFrame {
         conexionBBDD = DriverManager.getConnection(servidor, usuario, passwd);
 
         //  Block of code to try
-        String reportSrcFile = "src/main/java/com/example/concesionariobbdd/Basic_Report.jrxml";
+        String reportSrcFile = "src/main/java/com/example/concesionariobbdd/reportes/ReporteBasico.jrxml";
 
         // First, compile jrxml file.
         JasperReport jasperReport = JasperCompileManager.compileReport(reportSrcFile);
@@ -43,9 +43,6 @@ public class ReportCoches extends JFrame {
         // Ejemplo de definición de parámetros para el informe
 
         HashMap<String, Object> parameters = new HashMap<String, Object>();
-
-        parameters.put("company", "MAROTHIA TECHS");
-        parameters.put("receipt_no", "RE101".toString());
 
         JasperPrint print = JasperFillManager.fillReport(jasperReport, parameters, conexionBBDD);
         JRViewer viewer = new JRViewer(print);
@@ -60,8 +57,8 @@ public class ReportCoches extends JFrame {
 
     public void showReportConSubreport() throws JRException, ClassNotFoundException, SQLException {
 
-        String servidor = "jdbc:mariadb://localhost:5555/noinch?useSSL=false";
-        String usuario = "adminer";
+        String servidor = "jdbc:mariadb://localhost:5555/Concesionario?useSSL=false";
+        String usuario = "root";
         String passwd = "adminer";
 
         Connection conexionBBDD;
@@ -69,8 +66,8 @@ public class ReportCoches extends JFrame {
         conexionBBDD = DriverManager.getConnection(servidor, usuario, passwd);
 
         //  Block of code to try
-        String reportSrcFile = "src/main/java/com/example/javafxjasperreport/MaestroClientes.jrxml";
-        String subReportSrcFile = "src/main/java/com/example/javafxjasperreport/SubreportPedidos.jrxml";
+        String reportSrcFile = "src/main/java/com/example/concesionariobbdd/reportes/ReporteMaestro.jrxml";
+        String subReportSrcFile = "src/main/java/com/example/concesionariobbdd/reportes/Subreporte.jrxml";
 
         // First, compile jrxml file.
         JasperReport jasperReport = JasperCompileManager.compileReport(reportSrcFile);
