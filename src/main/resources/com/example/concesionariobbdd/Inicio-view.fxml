@@ -116,5 +116,6 @@
             <Insets />
          </GridPane.margin>
       </Button>
+      <Button mnemonicParsing="false" text="Reporte" GridPane.rowIndex="9" />
    </children>
 </GridPane>
