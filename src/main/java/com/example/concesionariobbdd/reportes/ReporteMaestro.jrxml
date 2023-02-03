@@ -16,6 +16,7 @@ NWVkM2U1ZTAzOTIwOw==]]>
 			<style backcolor="#E6DAC3"/>
 		</conditionalStyle>
 	</style>
+	<parameter name="Subreport" class="net.sf.jasperreports.engine.JasperReport"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT `Cod_coche`,
 	`Marca`,
@@ -88,7 +89,7 @@ FROM `Concesionario`.coches]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="122" splitType="Stretch">
+		<band height="67" splitType="Stretch">
 			<frame>
 				<reportElement style="Row" mode="Opaque" x="0" y="5" width="555" height="15" backcolor="#969696" uuid="a98495d8-3c8d-4fa0-81f5-30c3efc2f766"/>
 				<frame>
@@ -123,13 +124,13 @@ FROM `Concesionario`.coches]]>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{Subreport}]]></subreportExpression>
 			</subreport>
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="-3" y="50" width="555" height="3" forecolor="#030303" backcolor="#030303" uuid="1a61a836-d137-48b1-ad67-6ff64600bf93">
+			<line direction="BottomUp">
+				<reportElement positionType="FixRelativeToBottom" stretchType="ElementGroupHeight" x="0" y="60" width="555" height="1" forecolor="#030303" backcolor="#030303" uuid="1a61a836-d137-48b1-ad67-6ff64600bf93">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
-					<pen lineWidth="0.5" lineColor="#999999"/>
+					<pen lineWidth="2.5" lineStyle="Solid" lineColor="#030303"/>
 				</graphicElement>
 			</line>
 		</band>

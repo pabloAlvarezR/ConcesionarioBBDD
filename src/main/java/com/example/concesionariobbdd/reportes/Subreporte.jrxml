@@ -12,7 +12,7 @@
 	`Potencia`,
 	`Cilindrada`
 FROM `Concesionario`.motores
-WHERE IdMotor =  $P{Parameter1} ]]>
+WHERE IdMotor =  $P{Parameter1}]]>
 	</queryString>
 	<field name="IdMotor" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="IdMotor"/>
@@ -63,6 +63,12 @@ WHERE IdMotor =  $P{Parameter1} ]]>
 				</reportElement>
 				<text><![CDATA[Cilindrada]]></text>
 			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="10" y="20" width="519" height="1" uuid="f54a3631-110a-430e-84d4-e5604c828172"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
@@ -93,4 +99,17 @@ WHERE IdMotor =  $P{Parameter1} ]]>
 			</textField>
 		</band>
 	</detail>
+	<columnFooter>
+		<band height="9">
+			<line direction="BottomUp">
+				<reportElement positionType="FixRelativeToBottom" stretchType="ElementGroupHeight" x="10" y="4" width="519" height="1" forecolor="#030303" backcolor="#030303" uuid="1865437f-0b2d-4341-86a3-67dd5bd3970a">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="2.5" lineStyle="Solid" lineColor="#030303"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
 </jasperReport>
