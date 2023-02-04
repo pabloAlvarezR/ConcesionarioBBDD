@@ -100,16 +100,24 @@ WHERE IdMotor =  $P{Parameter1}]]>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="9">
+		<band height="41">
 			<line direction="BottomUp">
 				<reportElement positionType="FixRelativeToBottom" stretchType="ElementGroupHeight" x="10" y="4" width="519" height="1" forecolor="#030303" backcolor="#030303" uuid="1865437f-0b2d-4341-86a3-67dd5bd3970a">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
-					<pen lineWidth="2.5" lineStyle="Solid" lineColor="#030303"/>
+					<pen lineWidth="2.5" lineStyle="Solid" lineColor="#999999"/>
 				</graphicElement>
 			</line>
+			<textField>
+				<reportElement mode="Opaque" x="490" y="10" width="20" height="18" backcolor="#B0B0B0" uuid="50fd76e5-5d29-4eee-8ad3-0e18b1494adf"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="390" y="10" width="100" height="18" backcolor="#B0B0B0" uuid="ebc71faa-aa9d-4699-bca4-04e28625ff56"/>
+				<text><![CDATA[Numero de motores:]]></text>
+			</staticText>
 		</band>
 	</columnFooter>
 </jasperReport>

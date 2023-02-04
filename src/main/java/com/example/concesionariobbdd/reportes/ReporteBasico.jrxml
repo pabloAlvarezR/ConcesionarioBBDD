@@ -127,7 +127,7 @@ FROM `Concesionario`.coches]]>
 					</reportElement>
 					<textFieldExpression><![CDATA[$F{Modelo}]]></textFieldExpression>
 				</textField>
-				<textField textAdjust="StretchHeight">
+				<textField textAdjust="StretchHeight" pattern="#,##0.00">
 					<reportElement style="Detail" x="414" y="0" width="138" height="15" uuid="e4469e6a-f10e-4aa9-9ef7-9dd75d3b815b">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="30b6b1b1-10a6-4882-99d4-4808d5efe851"/>
 					</reportElement>

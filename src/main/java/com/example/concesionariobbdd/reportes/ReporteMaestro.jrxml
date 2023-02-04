@@ -66,32 +66,10 @@ FROM `Concesionario`.coches]]>
 	<pageHeader>
 		<band splitType="Stretch"/>
 	</pageHeader>
-	<columnHeader>
-		<band height="16" splitType="Stretch">
-			<staticText>
-				<reportElement style="Column header" x="0" y="0" width="185" height="15" forecolor="#030303" uuid="f2648437-7345-484a-afbb-e54ee322c135">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6a68e24f-0943-4c11-bbf8-445bd1dedeb2"/>
-				</reportElement>
-				<text><![CDATA[Cod_coche]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Column header" x="185" y="0" width="185" height="15" forecolor="#030303" uuid="693a6286-fa45-4df3-af1b-f47f60ad436b">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6138d6fe-ba63-43e3-bffd-a6cafeb9310d"/>
-				</reportElement>
-				<text><![CDATA[Marca]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Column header" x="370" y="0" width="185" height="15" forecolor="#030303" uuid="e653556b-6d59-4c3a-a86c-252e236e6f28">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0e9c5a82-aa80-491b-8315-d7f37ddfbd3e"/>
-				</reportElement>
-				<text><![CDATA[Modelo]]></text>
-			</staticText>
-		</band>
-	</columnHeader>
 	<detail>
-		<band height="67" splitType="Stretch">
+		<band height="43" splitType="Stretch">
 			<frame>
-				<reportElement style="Row" mode="Opaque" x="0" y="5" width="555" height="15" backcolor="#969696" uuid="a98495d8-3c8d-4fa0-81f5-30c3efc2f766"/>
+				<reportElement style="Row" mode="Opaque" x="0" y="15" width="555" height="15" backcolor="#969696" uuid="a98495d8-3c8d-4fa0-81f5-30c3efc2f766"/>
 				<frame>
 					<reportElement mode="Opaque" x="0" y="0" width="554" height="14" backcolor="#B0B0B0" uuid="18383ddd-fac9-4b6f-b141-649b8280bfb5">
 						<printWhenExpression><![CDATA[$F{Cod_coche}% 2 == 1]]></printWhenExpression>
@@ -117,22 +95,31 @@ FROM `Concesionario`.coches]]>
 				</textField>
 			</frame>
 			<subreport>
-				<reportElement x="0" y="20" width="555" height="29" uuid="13e111c0-af56-4568-8960-67ed66fdb048"/>
+				<reportElement x="0" y="30" width="555" height="10" uuid="13e111c0-af56-4568-8960-67ed66fdb048"/>
 				<subreportParameter name="Parameter1">
 					<subreportParameterExpression><![CDATA[$F{Cod_coche}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{Subreport}]]></subreportExpression>
 			</subreport>
-			<line direction="BottomUp">
-				<reportElement positionType="FixRelativeToBottom" stretchType="ElementGroupHeight" x="0" y="60" width="555" height="1" forecolor="#030303" backcolor="#030303" uuid="1a61a836-d137-48b1-ad67-6ff64600bf93">
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="185" height="15" forecolor="#030303" uuid="f2648437-7345-484a-afbb-e54ee322c135">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6a68e24f-0943-4c11-bbf8-445bd1dedeb2"/>
 				</reportElement>
-				<graphicElement>
-					<pen lineWidth="2.5" lineStyle="Solid" lineColor="#030303"/>
-				</graphicElement>
-			</line>
+				<text><![CDATA[Cod_coche]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="185" y="0" width="185" height="15" forecolor="#030303" uuid="693a6286-fa45-4df3-af1b-f47f60ad436b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6138d6fe-ba63-43e3-bffd-a6cafeb9310d"/>
+				</reportElement>
+				<text><![CDATA[Marca]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="370" y="0" width="185" height="15" forecolor="#030303" uuid="e653556b-6d59-4c3a-a86c-252e236e6f28">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0e9c5a82-aa80-491b-8315-d7f37ddfbd3e"/>
+				</reportElement>
+				<text><![CDATA[Modelo]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<pageFooter>
