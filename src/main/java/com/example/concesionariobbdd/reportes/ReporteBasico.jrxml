@@ -137,13 +137,21 @@ FROM `Concesionario`.coches]]>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch">
+		<band height="34" splitType="Stretch">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="fa45a887-615a-4d84-a2d7-8a2219671b3c"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
 			</line>
+			<textField>
+				<reportElement mode="Opaque" x="490" y="10" width="20" height="18" backcolor="#B0B0B0" uuid="fe1b4109-804e-454f-b617-bca22a52fedc"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="390" y="10" width="100" height="18" backcolor="#B0B0B0" uuid="0fb37c89-8196-46a8-93ac-a997b10798a3"/>
+				<text><![CDATA[Numero de Coches:]]></text>
+			</staticText>
 		</band>
 	</columnFooter>
 	<pageFooter>

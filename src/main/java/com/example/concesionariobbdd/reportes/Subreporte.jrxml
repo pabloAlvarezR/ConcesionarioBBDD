@@ -55,12 +55,14 @@ WHERE IdMotor =  $P{Parameter1}]]>
 				<reportElement x="310" y="0" width="100" height="20" uuid="0ad615c4-e88c-4973-84d6-77d0330c9736">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c3052fbc-7960-41e5-b210-e2958e975aab"/>
 				</reportElement>
+				<textElement textAlignment="Right"/>
 				<text><![CDATA[Potencia]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="430" y="0" width="100" height="20" uuid="7cdbf4cd-cb8f-437a-9334-35aa13e9e1ff">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a4069fa6-4b7f-4f0f-8ce2-7fe8debe37b9"/>
 				</reportElement>
+				<textElement textAlignment="Right"/>
 				<text><![CDATA[Cilindrada]]></text>
 			</staticText>
 			<line>
@@ -85,16 +87,18 @@ WHERE IdMotor =  $P{Parameter1}]]>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{Motor}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="#,##0.00">
 				<reportElement x="310" y="0" width="100" height="20" uuid="662b2758-8247-438e-bf80-a7ee50ae1b7d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c3052fbc-7960-41e5-b210-e2958e975aab"/>
 				</reportElement>
+				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$F{Potencia}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="#,##0.00">
 				<reportElement x="430" y="0" width="100" height="20" uuid="0e42e245-ff95-4c5a-bd7f-a1ad074b3186">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a4069fa6-4b7f-4f0f-8ce2-7fe8debe37b9"/>
 				</reportElement>
+				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$F{Cilindrada}]]></textFieldExpression>
 			</textField>
 		</band>
