@@ -24,12 +24,12 @@ WHERE IdMotor =  $P{Parameter1}]]>
 		<property name="com.jaspersoft.studio.field.label" value="Motor"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="motores"/>
 	</field>
-	<field name="Potencia" class="java.lang.String">
+	<field name="Potencia" class="java.lang.Float">
 		<property name="com.jaspersoft.studio.field.name" value="Potencia"/>
 		<property name="com.jaspersoft.studio.field.label" value="Potencia"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="motores"/>
 	</field>
-	<field name="Cilindrada" class="java.lang.String">
+	<field name="Cilindrada" class="java.lang.Float">
 		<property name="com.jaspersoft.studio.field.name" value="Cilindrada"/>
 		<property name="com.jaspersoft.studio.field.label" value="Cilindrada"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="motores"/>
@@ -40,19 +40,14 @@ WHERE IdMotor =  $P{Parameter1}]]>
 	<columnHeader>
 		<band height="22">
 			<staticText>
-				<reportElement x="10" y="0" width="100" height="20" uuid="2509eaff-e230-4f43-8a18-322edd0be7da">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8e47f335-cd6a-4dbe-8ad4-cc55b1655ede"/>
-				</reportElement>
-				<text><![CDATA[IdMotor]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="200" y="0" width="100" height="20" uuid="4db3c7aa-30bb-43f2-9e38-5ca6beccf362">
+				<reportElement x="10" y="0" width="100" height="20" uuid="4db3c7aa-30bb-43f2-9e38-5ca6beccf362">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ea21227-f14a-4aa4-9ff5-60950510dba6"/>
 				</reportElement>
+				<textElement textAlignment="Right"/>
 				<text><![CDATA[Motor]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="310" y="0" width="100" height="20" uuid="0ad615c4-e88c-4973-84d6-77d0330c9736">
+				<reportElement x="230" y="1" width="100" height="20" uuid="0ad615c4-e88c-4973-84d6-77d0330c9736">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c3052fbc-7960-41e5-b210-e2958e975aab"/>
 				</reportElement>
 				<textElement textAlignment="Right"/>
@@ -76,25 +71,20 @@ WHERE IdMotor =  $P{Parameter1}]]>
 	<detail>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="10" y="0" width="100" height="20" uuid="50f65cd3-7cf5-4c48-87e0-3121e9bafa8f">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8e47f335-cd6a-4dbe-8ad4-cc55b1655ede"/>
-				</reportElement>
-				<textFieldExpression><![CDATA[$F{IdMotor}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="200" y="0" width="100" height="20" uuid="4a69ae34-8a84-4e76-942e-fb145fe47489">
+				<reportElement x="10" y="0" width="100" height="20" uuid="4a69ae34-8a84-4e76-942e-fb145fe47489">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ea21227-f14a-4aa4-9ff5-60950510dba6"/>
 				</reportElement>
+				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$F{Motor}]]></textFieldExpression>
 			</textField>
-			<textField pattern="#,##0.00">
-				<reportElement x="310" y="0" width="100" height="20" uuid="662b2758-8247-438e-bf80-a7ee50ae1b7d">
+			<textField pattern="#,##0.### cv">
+				<reportElement x="230" y="0" width="100" height="20" uuid="662b2758-8247-438e-bf80-a7ee50ae1b7d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c3052fbc-7960-41e5-b210-e2958e975aab"/>
 				</reportElement>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$F{Potencia}]]></textFieldExpression>
 			</textField>
-			<textField pattern="#,##0.00">
+			<textField pattern="#,##0 cc">
 				<reportElement x="430" y="0" width="100" height="20" uuid="0e42e245-ff95-4c5a-bd7f-a1ad074b3186">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a4069fa6-4b7f-4f0f-8ce2-7fe8debe37b9"/>
 				</reportElement>

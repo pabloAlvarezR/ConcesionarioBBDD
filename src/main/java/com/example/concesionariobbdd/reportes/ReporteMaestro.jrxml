@@ -76,19 +76,13 @@ FROM `Concesionario`.coches]]>
 					</reportElement>
 				</frame>
 				<textField textAdjust="StretchHeight">
-					<reportElement style="Detail" x="0" y="0" width="185" height="15" uuid="848f6231-ca15-420e-b15c-26911024cc84">
-						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6a68e24f-0943-4c11-bbf8-445bd1dedeb2"/>
-					</reportElement>
-					<textFieldExpression><![CDATA[$F{Cod_coche}]]></textFieldExpression>
-				</textField>
-				<textField textAdjust="StretchHeight">
-					<reportElement style="Detail" x="185" y="0" width="185" height="15" uuid="44780ebc-5a81-4a35-bc3d-676be41d4bf8">
+					<reportElement style="Detail" x="1" y="0" width="185" height="15" uuid="44780ebc-5a81-4a35-bc3d-676be41d4bf8">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6138d6fe-ba63-43e3-bffd-a6cafeb9310d"/>
 					</reportElement>
 					<textFieldExpression><![CDATA[$F{Marca}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
-					<reportElement style="Detail" x="370" y="0" width="185" height="15" uuid="2e490b26-134d-43cd-bcd4-9076dc4fe337">
+					<reportElement style="Detail" x="390" y="0" width="165" height="15" uuid="2e490b26-134d-43cd-bcd4-9076dc4fe337">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0e9c5a82-aa80-491b-8315-d7f37ddfbd3e"/>
 					</reportElement>
 					<textFieldExpression><![CDATA[$F{Modelo}]]></textFieldExpression>
@@ -103,19 +97,13 @@ FROM `Concesionario`.coches]]>
 				<subreportExpression><![CDATA[$P{Subreport}]]></subreportExpression>
 			</subreport>
 			<staticText>
-				<reportElement style="Column header" x="0" y="0" width="185" height="15" forecolor="#030303" uuid="f2648437-7345-484a-afbb-e54ee322c135">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6a68e24f-0943-4c11-bbf8-445bd1dedeb2"/>
-				</reportElement>
-				<text><![CDATA[Cod_coche]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Column header" x="185" y="0" width="185" height="15" forecolor="#030303" uuid="693a6286-fa45-4df3-af1b-f47f60ad436b">
+				<reportElement style="Column header" x="0" y="0" width="186" height="15" forecolor="#030303" uuid="693a6286-fa45-4df3-af1b-f47f60ad436b">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6138d6fe-ba63-43e3-bffd-a6cafeb9310d"/>
 				</reportElement>
 				<text><![CDATA[Marca]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="370" y="0" width="185" height="15" forecolor="#030303" uuid="e653556b-6d59-4c3a-a86c-252e236e6f28">
+				<reportElement style="Column header" x="390" y="0" width="165" height="15" forecolor="#030303" uuid="e653556b-6d59-4c3a-a86c-252e236e6f28">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0e9c5a82-aa80-491b-8315-d7f37ddfbd3e"/>
 				</reportElement>
 				<text><![CDATA[Modelo]]></text>

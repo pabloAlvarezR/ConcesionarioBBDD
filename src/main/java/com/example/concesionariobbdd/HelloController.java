@@ -15,54 +15,169 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
 
+/**
+ * Controlador de la ventana principal del programa, encargado de manejar la interfaz gráfica
+ * y gestionar los eventos del usuario.
+ */
 public class HelloController {
+
+    /**
+     * Concesionario auxiliar utilizado para realizar operaciones sobre los datos del concesionario.
+     */
     private Concesionario auxiliar;
 
+    /**
+     * Botón para añadir un nuevo coche.
+     */
     @FXML
-    private Button btnAnadir, btnAtras, btnReporte;
+    private Button btnAnadir;
+
+    /**
+     * Botón para volver a la pantalla principal.
+     */
+    @FXML
+    private Button btnAtras;
+
+    /**
+     * Botón para abrir la ventana de búsqueda.
+     */
     @FXML
     private Button btnBuscar;
+
+    /**
+     * Botón para abrir la ventana de edición.
+     */
     @FXML
     private Button btnEditar;
+
+    /**
+     * Botón para eliminar un coche.
+     */
     @FXML
     private Button btnEliminar;
+
+    /**
+     * Botón para abrir la ventana de motores.
+     */
     @FXML
-    private Button btnMotores;
+    private Button btnMotores, btnReporte;
+
+    /**
+     * Campo de texto para introducir el código del coche.
+     */
     @FXML
-    private TextField tfCod_Coche , tfPrecioMax, tfPrecioMin;
+    private TextField tfCod_Coche;
+
+    /**
+     * Campo de texto para introducir el precio máximo.
+     */
+    @FXML
+    private TextField tfPrecioMax;
+
+    /**
+     * Campo de texto para introducir el precio mínimo.
+     */
+    @FXML
+    private TextField tfPrecioMin;
+
+    /**
+     * Campo de texto para introducir la marca del coche.
+     */
     @FXML
     private TextField tfMarca;
+
+    /**
+     * Campo de texto para introducir el modelo del coche.
+     */
     @FXML
     private TextField tfModelo;
+
+    /**
+     * Campo de texto para introducir el año de fabricación del coche.
+     */
     @FXML
     private TextField tfAnio_Fabricacion;
+
+    /**
+     * Campo de texto para introducir el número de bastidor del coche.
+     */
     @FXML
     private TextField tfBastidor;
+
+    /**
+     * Campo de texto para introducir el precio del coche.
+     */
     @FXML
     private TextField tfPrecio;
+
+    /**
+     * Campo de texto para introducir la matrícula del coche.
+     */
     @FXML
     private TextField tfMatricula;
+
+    /**
+     * Área de texto para introducir extras del coche.
+     */
     @FXML
     private TextArea tfExtras;
+
+    /**
+     * Tabla que muestra los coches disponibles.
+     */
     @FXML
     private TableView tvCoches;
+
+    /**
+     * Columna que muestra el código del coche.
+     */
     @FXML
     private TableColumn tcCod_Coche;
+
+    /**
+     * Columna que muestra la marca del coche.
+     */
     @FXML
     private TableColumn tcMarca;
+
+    /**
+     * Columna que muestra el modelo del coche.
+     */
     @FXML
     private TableColumn tcModelo;
+
+    /**
+     * Columna que muestra el año de fabricación del coche.
+     */
     @FXML
     private TableColumn tcAnio_Fabricacion;
+
+    /**
+     * Columna que muestra el número de bastidor del coche.
+     */
     @FXML
     private TableColumn tcBastidor;
+
+    /**
+     * Columna que muestra el precio del coche.
+     */
     @FXML
     private TableColumn tcPrecio;
+
+    /**
+     * Columna que muestra la matrícula del coche.
+     */
     @FXML
     private TableColumn tcMatricula;
+
+    /**
+     * TableColumn para mostrar los extras de cada coche en la tabla
+     */
     @FXML
     private TableColumn tcExtras;
-
+    /**
+     *  Función para borrar el contenido de los campos de texto
+     */
     public void borrarTF(){
         tfCod_Coche.clear();
         tfMarca.clear();
@@ -73,12 +188,12 @@ public class HelloController {
         tfMatricula.clear();
         tfExtras.clear();
     }
-
-    public void GoToAnnadir(ActionEvent event){
-
-
+    /**
+     * Función para cambiar a la vista de añadir un nuevo coche
+     */
+    public void GoToAnnadir(){ //
         FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Annadir-view.fxml"));
-        Parent root = null;
+        Parent root;
         try {
             root = fxmlLoader2.load();
         } catch (IOException e) {
@@ -90,18 +205,18 @@ public class HelloController {
         stage.setTitle("Añadir nuevo coche");
         stage.setResizable(false);
         stage.setScene(scene);
-        stage.show();
+        stage.show(); // Muestra la nueva ventana para añadir un coche
 
         Stage stage2 = (Stage) this.btnAnadir.getScene().getWindow();
-        stage2.close();
+        stage2.close(); // Cierra la ventana actual
 
     }
 
-    public void GoToInicio(ActionEvent event){
+    public void GoToInicio(){
 
         try {
             FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Inicio-view.fxml"));
-            Parent root = null;
+            Parent root;
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
@@ -117,11 +232,11 @@ public class HelloController {
         }
     }
 
-    public void GoToEditar(ActionEvent event){
+    public void GoToEditar(){
 
         try {
             FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Editar-view.fxml"));
-            Parent root = null;
+            Parent root;
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
@@ -137,11 +252,11 @@ public class HelloController {
         }
     }
 
-    public void GoToBuscar(ActionEvent event){
+    public void GoToBuscar(){
 
         try {
             FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Buscar-view.fxml"));
-            Parent root = null;
+            Parent root;
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
@@ -157,11 +272,11 @@ public class HelloController {
         }
     }
 
-    public void GoToEliminar(ActionEvent event){
+    public void GoToEliminar(){
 
         try {
             FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Eliminar-view.fxml"));
-            Parent root = null;
+            Parent root;
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
@@ -177,11 +292,11 @@ public class HelloController {
         }
     }
 
-    public void GoToMotores(ActionEvent event){
+    public void GoToMotores(){
 
         try {
             FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Motores-view.fxml"));
-            Parent root = null;
+            Parent root;
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
@@ -196,11 +311,11 @@ public class HelloController {
         }
     }
 
-    public void GoToReportes(ActionEvent event){
+    public void GoToReportes(){
 
         try {
             FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Reports-view.fxml"));
-            Parent root = null;
+            Parent root;
             root = fxmlLoader2.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
@@ -216,12 +331,9 @@ public class HelloController {
     }
 
     public void mostrarDatos() {
-       /* Dynamic TableView Data From Database
-          BY Narayan G. Maharjan https://blog.ngopal.com.np/2011/10/19/dyanmic-tableview-data-from-database/comment-page-1/
-          Modificado por FDGA
-        */
-        ObservableList<Object> data = FXCollections.observableArrayList();
-        Connection c = null;
+
+        ObservableList<Object> data;
+        Connection c;
         data = FXCollections.observableArrayList();
         try {
             c = DriverManager.getConnection("jdbc:mariadb://localhost:5555/Concesionario?useSSL=false"
@@ -267,14 +379,13 @@ public class HelloController {
         }
     }
 
-    public boolean buscarCod_Coche(ActionEvent actionEvent) {
+    public boolean buscarCod_Coche() {
         ObservableList<Concesionario> data = null;
         try {
-            Connection conexionBBDD;
 
             Concesionario auxiliar;
             data = FXCollections.observableArrayList();
-            Connection c = null;
+            Connection c;
             c = DriverManager.getConnection("jdbc:mariadb://localhost:5555/Concesionario?useSSL=false"
                     , "root",
                     "adminer");
@@ -334,11 +445,10 @@ public class HelloController {
     public boolean buscarPrecio(ActionEvent actionEvent) {
         ObservableList<Concesionario> data = null;
         try {
-            Connection conexionBBDD;
 
             Concesionario auxiliar;
             data = FXCollections.observableArrayList();
-            Connection c = null;
+            Connection c;
             c = DriverManager.getConnection("jdbc:mariadb://localhost:5555/Concesionario?useSSL=false"
                     , "root",
                     "adminer");
@@ -401,9 +511,7 @@ public class HelloController {
         return false;
     }
 
-    public boolean Insertar(ActionEvent actionEvent) {
-        Concesionario auxiliar;
-        ObservableList<Object> data = FXCollections.observableArrayList();
+    public boolean Insertar() {
         int registrosAfectadosConsulta = 0;
         Connection c;
 
@@ -430,8 +538,6 @@ public class HelloController {
 
                 PreparedStatement st = c.prepareStatement(SQL);
 
-
-
                 st.setString(1, tfCod_Coche.getText());
                 st.setString(2, tfMarca.getText());
                 st.setString(3, tfModelo.getText());
@@ -441,10 +547,7 @@ public class HelloController {
                 st.setString(7, tfMatricula.getText());
                 st.setString(8, tfExtras.getText());
 
-
-
                 registrosAfectadosConsulta = st.executeUpdate();
-
 
                 borrarTF();
                 Alert alert;
@@ -465,22 +568,10 @@ public class HelloController {
 
             } catch (Exception e) {
                 e.printStackTrace();
-                System.out.println("Error:" + e.toString());
+                System.out.println("Error:" + e);
             }
         }
         return false;
-    }
-
-
-
-    public void Coche(Event event) {
-        TiempoEjecucion coche = new TiempoEjecucion();
-        Stage stage = new Stage();
-        try {
-            coche.start(stage);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     @FXML

@@ -15,6 +15,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
 
+/**
+
+ Controlador de la vista de edición de coches.
+ */
 public class EditarController {
     private Concesionario auxiliar;
 
@@ -65,6 +69,10 @@ public class EditarController {
 
     private Text txtBindingSelecc;
 
+    /**
+
+     Borra los campos de texto del formulario.
+     */
     public void borrarTF(){
         tfCod_Coche.clear();
         tfMarca.clear();
@@ -75,10 +83,11 @@ public class EditarController {
         tfMatricula.clear();
         tfExtras.clear();
     }
+    /**
 
+     Redirige a la vista de añadir coche.
+     */
     public void GoToAnnadir(ActionEvent event){
-
-
         FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("Annadir-view.fxml"));
         Parent root = null;
         try {
@@ -96,9 +105,17 @@ public class EditarController {
 
         Stage stage2 = (Stage) this.btnAnadir.getScene().getWindow();
         stage2.close();
-
     }
+    /**
 
+     Este método permite ir a la vista "Inicio-view.fxml" al hacer clic en el botón correspondiente.
+
+     Carga la vista y la muestra en una nueva ventana.
+
+     Cierra la ventana actual.
+
+     @param event El evento del botón "Ir a Inicio".
+     */
     public void GoToInicio(ActionEvent event){
 
         try {
@@ -119,6 +136,16 @@ public class EditarController {
         }
     }
 
+    /**
+
+     Este método permite ir a la vista "Editar-view.fxml" al hacer clic en el botón correspondiente.
+
+     Carga la vista y la muestra en una nueva ventana.
+
+     Cierra la ventana actual.
+
+     @param event El evento del botón "Ir a Editar".
+     */
     public void GoToEditar(ActionEvent event){
 
         try {
@@ -139,6 +166,16 @@ public class EditarController {
         }
     }
 
+    /**
+
+     Este método permite ir a la vista "Buscar-view.fxml" al hacer clic en el botón correspondiente.
+
+     Carga la vista y la muestra en una nueva ventana.
+
+     Cierra la ventana actual.
+
+     @param event El evento del botón "Ir a Buscar".
+     */
     public void GoToBuscar(ActionEvent event){
 
         try {
@@ -159,6 +196,16 @@ public class EditarController {
         }
     }
 
+    /**
+
+     Este método permite ir a la vista "Eliminar-view.fxml" al hacer clic en el botón correspondiente.
+
+     Carga la vista y la muestra en una nueva ventana.
+
+     Cierra la ventana actual.
+
+     @param event El evento del botón "Ir a Eliminar".
+     */
     public void GoToEliminar(ActionEvent event){
 
         try {
@@ -179,6 +226,14 @@ public class EditarController {
         }
     }
 
+    /**
+
+     Este método carga la vista de Motores-view.fxml y la muestra en una nueva ventana.
+
+     También cierra la ventana actual al hacer clic en el botón "Motores".
+
+     @param event El evento de clic del botón "Motores".
+     */
     public void GoToMotores(ActionEvent event){
 
         try {
@@ -198,7 +253,13 @@ public class EditarController {
 
         }
     }
+    /**
 
+     Este método obtiene datos de la base de datos y los muestra en una TableView dinámica.
+     /
+     public void mostrarDatos() {
+     / Dynamic TableView Data From Database
+     */
     public void mostrarDatos() {
        /* Dynamic TableView Data From Database
           BY Narayan G. Maharjan https://blog.ngopal.com.np/2011/10/19/dyanmic-tableview-data-from-database/comment-page-1/

@@ -19,7 +19,7 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label prefHeight="63.0" prefWidth="322.0" text="Reportes" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+      <Label prefHeight="63.0" prefWidth="322.0" text="Reportes" textFill="WHITE" underline="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
          <font>
             <Font name="Verdana Bold" size="32.0" />
          </font>
